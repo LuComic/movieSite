@@ -27,7 +27,7 @@ const Stats: React.FC = () => {
   else if (totalWatched >= 26) title = "Get a Life";
 
   return (
-    <div className="stats stats-vertical bg-black/60 lg:stats-horizontal shadow mb-4 border-red-600 border-2">
+    <div className="stats stats-vertical bg-black/60 lg:stats-horizontal shadow-sm mb-4 border-red-600 border-2">
       <div className="stat">
         <div className="stat-title text-white flex items-center gap-2">
           <Image src={movieSvg} alt={"movie icon"} />

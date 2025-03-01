@@ -33,7 +33,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow-sm"
           >
             <li>
               <a className="responsive-body text-white hover:text-red-300">

@@ -19,15 +19,15 @@ const Stats: React.FC = () => {
   const totalWatched = watchList.length; // Sum of movies and series
 
   // Determine the title based on total watched count
-  let title = "Watch something!";
-  if (totalWatched >= 1 && totalWatched <= 10) title = "Beginner Fiend";
+  let title = "Beginner Fiend";
+  if (totalWatched >= 0 && totalWatched <= 10) title = "Beginner Fiend";
   else if (totalWatched >= 11 && totalWatched <= 20) title = "Casual Fiend";
   else if (totalWatched >= 21 && totalWatched <= 25)
     title = "Professional Fiend";
   else if (totalWatched >= 26) title = "Get a Life";
 
   return (
-    <div className="stats stats-vertical bg-black/60 lg:stats-horizontal shadow-sm mb-4 border-red-600 border-2">
+    <div className="stats stats-vertical bg-black/60 lg:stats-horizontal shadow-sm border-red-600 border-2">
       <div className="stat">
         <div className="stat-title text-white flex items-center gap-2">
           <Image src={movieSvg} alt={"movie icon"} />

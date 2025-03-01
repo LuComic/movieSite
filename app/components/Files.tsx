@@ -31,10 +31,10 @@ const Files = () => {
   };
 
   return (
-    <ul className="menu xl:menu-lg lg:menu-md md:menu-sm sm:menu-xs bg-black/60 rounded-lg w-full max-w-xs row-span-2 mx-auto border-red-600 border-2 mb-4 xl:mb-0 lg:mb-0">
+    <ul className="menu pb-3 h-full xl:menu-lg lg:menu-md md:menu-sm sm:menu-xs bg-black/60 rounded-lg w-full max-w-lg row-span-2 mx-auto border-red-600 border-2">
       <li>
         <details open>
-          <summary className="text-white font-bold hover:text-red-300">
+          <summary className="text-white font-bold hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
             <Image src={movieSvg} alt={"movie icon"} />
             Movies
           </summary>
@@ -46,7 +46,7 @@ const Files = () => {
                   className="flex gap-4 items-center justify-start"
                 >
                   <li>
-                    <a className="text-white hover:text-red-300">
+                    <a className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs">
                       {movie.name}
                     </a>
                   </li>
@@ -59,14 +59,18 @@ const Files = () => {
                 </div>
               ))
             ) : (
-              <li className="text-gray-400 italic">No movies yet</li>
+              <li>
+                <a className="text-gray-400 italic xl:text-base lg:text-sm md:text-xs sm:text-xs pr-2">
+                  No movies yet
+                </a>
+              </li>
             )}
           </ul>
         </details>
       </li>
       <li>
         <details open>
-          <summary className="text-white font-bold hover:text-red-300">
+          <summary className="text-white font-bold hover:text-red-300 mt-2 mb-1 lg:text-base md:text-sm sm:text-xs">
             <Image src={showSvg} alt={"series icon"} />
             Series
           </summary>
@@ -89,7 +93,11 @@ const Files = () => {
                 </div>
               ))
             ) : (
-              <li className="text-gray-400 italic">No series yet</li>
+              <li>
+                <a className="text-gray-400 italic xl:text-base lg:text-sm md:text-xs sm:text-xs pr-2">
+                  No series yet
+                </a>
+              </li>
             )}
           </ul>
         </details>

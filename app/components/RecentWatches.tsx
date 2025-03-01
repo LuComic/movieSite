@@ -14,10 +14,10 @@ const RecentWatches = () => {
   const recentWatches = watchList.slice(-3).reverse();
 
   return (
-    <div className="border-red-600 border-2 rounded-xl p-4 bg-black/60">
-      <h3 className="responsive-h3 text-white font-semibold pb-2">
+    <div className="border-red-600 border-2 rounded-lg p-4 bg-black/60">
+      <p className="xl:text-2xl lg:text-xl md:text-lg sm:text-base text-white font-semibold pb-2">
         Recent Watches
-      </h3>
+      </p>
       <div className="overflow-x-auto">
         <table className="table">
           {/* Table Head */}
@@ -41,7 +41,10 @@ const RecentWatches = () => {
               ))
             ) : (
               <tr>
-                <td colSpan={4} className="text-center text-gray-400 italic">
+                <td
+                  colSpan={4}
+                  className="text-center text-gray-400 italic xl:text-base lg:text-sm md:text-xs sm:text-xs"
+                >
                   No recent watches
                 </td>
               </tr>

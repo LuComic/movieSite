@@ -7,7 +7,7 @@ import { WatchListProvider } from "./WatchListInfo";
 const FilesAndMovies = () => {
   return (
     <WatchListProvider>
-      <div className="z-20 w-auto h-auto lg:grid lg:grid-cols-2 lg:grid-rows-2 sm:flex sm:flex-col">
+      <div className="z-20 w-auto h-auto grid lg:grid-cols-2 lg:grid-rows-2 gap-4">
         <Files />
         <Stats />
         <RecentWatches />

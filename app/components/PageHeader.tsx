@@ -120,7 +120,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
       <div className="navbar-end">
         <button
           onClick={openModal}
-          className="btn responsive-body bg-[#ff0404] hover:bg-red-700 border-none text-white"
+          className="btn responsive-body bg-[#ff0404] hover:bg-red-700 border-õõõ text-white border-none"
         >
           <Image src={addCircle} alt={"add icon"} /> New
         </button>

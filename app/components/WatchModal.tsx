@@ -49,7 +49,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           Movie or series?
         </p>
         <select
-          className="select select-bordered w-full max-w-xs"
+          className="select select-bordered w-full max-w-xs bg-opacity-0 text-white border-white"
           name="type"
           value={form.type}
           onChange={handleChange}
@@ -66,7 +66,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           value={form.name}
           onChange={handleChange}
           placeholder="Name"
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered w-full max-w-xs bg-opacity-0 text-white border-white"
         />
         <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
           Thoughts?
@@ -76,7 +76,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           placeholder="Best thing I've ever seen..."
           value={form.description}
           onChange={handleChange}
-          className="textarea textarea-bordered w-full max-w-xs"
+          className="textarea textarea-bordered w-full max-w-xs bg-opacity-0 text-white border-white"
         ></textarea>
         <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
           Rate it 1 to 5
@@ -89,7 +89,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           placeholder="Rating (1-5)"
           value={form.rating}
           onChange={handleChange}
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered w-full max-w-xs bg-opacity-0 text-white border-white"
         />
         <div className="flex justify-between gap-4 mt-4">
           <button

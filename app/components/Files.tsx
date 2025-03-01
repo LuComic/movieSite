@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useContext } from "react";
 import Image from "next/image";
 import movieSvg from "../pictures/movie_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
@@ -18,16 +16,16 @@ const Files = () => {
   const movies = watchList.filter((item) => item.type === "Movie");
   const series = watchList.filter((item) => item.type === "Series");
 
-  // Function to handle deleting an item
   const handleDelete = (itemToDelete: any) => {
-    // Filter out the item to be deleted
+    // Create a new list that excludes the deleted item by filtering it out
     const updatedList = watchList.filter((item) => item !== itemToDelete);
 
-    // Update the context state
-    setWatchList(updatedList);
+    // Update the context state by passing the new list reference
+    setWatchList(updatedList); // No need to spread the array again
 
-    // Also update localStorage
+    // Immediately update localStorage with the new list to ensure it reflects the deletion
     localStorage.setItem("watchList", JSON.stringify(updatedList));
+    window.location.reload();
   };
 
   return (

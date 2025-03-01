@@ -7,7 +7,7 @@ import Sky from "./pictures/stacked-waves-haikei-4.svg";
 import Image from "next/image";
 import { WatchListProvider } from "./components/WatchListInfo"; // ✅ Import the provider
 import WatchModal from "./components/WatchModal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [isModalOpen, setModalOpen] = useState(false);

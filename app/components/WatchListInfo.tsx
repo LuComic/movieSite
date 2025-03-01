@@ -1,4 +1,3 @@
-// WatchListInfo.tsx (Context)
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { WatchItem } from "./Types";
 
@@ -27,9 +26,13 @@ export const WatchListProvider: React.FC<{ children: ReactNode }> = ({
     }
   }, []);
 
-  const addItem = (item: WatchItem) => {
-    const updatedList = [...watchList, item];
+  const addItem = (newItem: WatchItem) => {
+    const updatedList = [...watchList, newItem];
+
+    // Update the context state
     setWatchList(updatedList);
+
+    // Immediately update localStorage with the new list
     localStorage.setItem("watchList", JSON.stringify(updatedList));
   };
 

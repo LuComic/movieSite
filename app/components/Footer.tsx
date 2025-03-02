@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import movieDatabaseLogo from "../pictures/tmdb_logo.svg";
 
 const Footer = () => {
   return (
@@ -58,6 +60,17 @@ const Footer = () => {
             </svg>
           </a>
         </div>
+      </nav>
+      <nav className="max-w-[30vw] ml-auto">
+        <Image
+          src={movieDatabaseLogo}
+          alt="tmdb logo"
+          className="ml-auto w-16"
+        />
+        <h6 className="text-white font-xs text-right">
+          This website uses TMDB and the TMDB APIs but is not endorsed,
+          certified, or otherwise approved by TMDB.
+        </h6>
       </nav>
     </footer>
   );

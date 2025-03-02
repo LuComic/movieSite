@@ -3,7 +3,7 @@
 import { useState, useContext } from "react";
 import { WatchListInfo } from "./WatchListInfo";
 import { WatchItem } from "./Types";
-import { title } from "process";
+import { fetchMovieData } from "./tmdb"; // Import the fetch function
 
 interface ModalProps {
   closeModal: () => void;
@@ -34,10 +34,43 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (form.name.trim() && form.rating) {
-      addItem(form);
-      closeModal();
+      // Fetch movie data
+      const movieData = await fetchMovieData(form.name);
+
+      if (movieData) {
+        const posterUrl = movieData.poster_path
+          ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
+          : undefined;
+
+        const releaseDate = movieData.release_date || "Unknown"; // Release date
+        const genres = movieData.genres
+          ? movieData.genres
+              .map((genre: { name: string }) => genre.name)
+              .join(", ")
+          : "Unknown"; // Extract genre names
+
+        // Fetch cast information (if available)
+        const castList = movieData.credits?.cast
+          ? movieData.credits.cast
+              .slice(0, 5) // Get top 5 cast members
+              .map((actor: { name: string }) => actor.name)
+              .join(", ")
+          : "Cast unavailable";
+
+        // Add the new details to the watch item
+        const newItem: WatchItem = {
+          ...form,
+          posterUrl,
+          releaseDate,
+          genres,
+          movieCast: castList,
+        };
+
+        addItem(newItem);
+        closeModal();
+      }
     }
   };
 
@@ -62,7 +95,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
         </p>
         <input
           type="text"
-          name="name" // Ensure this is 'name' instead of 'text'
+          name="name"
           value={form.name}
           onChange={handleChange}
           placeholder="Name"

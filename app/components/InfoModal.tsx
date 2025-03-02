@@ -23,18 +23,7 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
 
   const description = movie.description;
   const rating = movie.rating;
-
-  useEffect(() => {
-    // Fetch movie data when the modal opens
-    const fetchData = async () => {
-      setIsLoading(true); // Start loading
-      const data = await fetchMovieData(movie.name);
-      setMovieData(data);
-      setIsLoading(false); // Stop loading
-    };
-
-    fetchData();
-  }, [movie.name]);
+  const poster = movie.posterUrl;
 
   const handleClose = () => {
     closeInfoModal();
@@ -47,52 +36,64 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
         <Image
           src={movieDatabaseLogo}
           alt="tmdb logo"
-          className="ml-auto w-20"
+          className="ml-auto w-16"
         />
         <p className="text-xs text-[#01b4e4] text-right mt-3">
           This website uses TMDB and the TMDB APIs but is not endorsed,
           certified, or otherwise approved by TMDB.
         </p>
       </div>
-
-      {/* Modal Content */}
-      <div className="card max-w-3xl max-h-[80vh] shadow-sm mx-auto my-auto rounded-xl overflow-y-auto bg-black">
-        <figure className="relative w-full h-96">
-          {" "}
-          {/* Fixed height for the image container */}
-          {/* Movie Poster */}
-          {isLoading ? (
-            <div className="w-full h-96 bg-gray-700 animate-pulse"></div> // Loading skeleton
+      <div className="card lg:card-side w-auto max-w-[70vw] max-h-[70vh] shadow-sm mx-auto my-auto rounded-xl overflow-y-auto bg-black">
+        <figure className="relative flex-shrink-0 w-1/2 h-auto">
+          {movie.posterUrl ? (
+            <img
+              src={movie.posterUrl}
+              alt={movie.name}
+              className="w-full h-auto object-contain" // Change object-cover to object-contain
+            />
           ) : (
-            movieData?.poster_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`}
-                alt={movie.name}
-                className="w-full h-full object-cover" // Use object-cover to fill the container
-              />
-            )
+            <div className="w-full h-96 bg-gray-700 animate-pulse"></div>
           )}
-          {/* Close Button */}
-          <Image
-            src={closeSvg}
-            alt="close icon"
-            className="absolute top-2 right-2 rounded-full cursor-pointer bg-black/30 p-1"
-            onClick={handleClose}
-          />
         </figure>
 
-        {/* Movie Details */}
-        <div className="card-body bg-gradient-to-t from-red-950/60 from-30% to-black/60 rounded-xl">
-          <h2 className="card-title text-white">{movie.name}</h2>
-          <p className="text-white">
-            {description} {/* Use TMDb overview if available */}
-          </p>
-          <div className="card-actions justify-end items-center">
-            <div className="badge badge-outline">
-              {rating}
-              /5
+        <Image
+          src={closeSvg}
+          alt="close icon"
+          width={24} // Explicitly set width
+          height={24} // Explicitly set height
+          className="absolute top-2 left-2 bg-black/30 rounded-full p-1 cursor-pointer" // Add padding and cursor
+          onClick={handleClose}
+        />
+        <div className="card-body bg-gradient-to-t from-red-950/60 from-30% to-black/60 rounded-br-xl rounded-tl-xl w-1/3">
+          <h3 className="responsive-h3 font-semibold text-white">
+            {movie.name}
+          </h3>
+          <p className="text-white grow-0">{description}</p>
+          <div className="my-auto">
+            <div>
+              <p className="text-white font-semibold responsive-body">
+                Release:
+              </p>
+              <p className="text-white text-left my-2">{movie.releaseDate}</p>
             </div>
-            <div className="badge badge-outline">{movie.type}</div>
+            <div>
+              <p className="text-white font-semibold responsive-body">
+                Genres:
+              </p>
+              <p className="text-white text-left my-2">{movie.genres}</p>
+            </div>
+            <div>
+              <p className="text-white font-semibold responsive-body">Cast:</p>
+              <p className="text-white text-left my-2">{movie.movieCast}</p>
+            </div>
+          </div>
+          <div className="card-actions justify-end items-center">
+            <div className="badge badge-outline responsive-body font-semibold">
+              {rating}/5
+            </div>
+            <div className="badge badge-outline responsive-body font-semibold">
+              {movie.type}
+            </div>
           </div>
         </div>
       </div>

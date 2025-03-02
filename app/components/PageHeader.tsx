@@ -5,6 +5,7 @@ import showSvg from "../pictures/live_tv_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.
 import topSvg from "../pictures/leaderboard_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import addCircle from "../pictures/add_circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import allIcon from "../pictures/apps_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
+import Link from "next/link";
 
 interface PageHeaderProps {
   openModal: () => void; // Function passed from App to open the modal
@@ -54,22 +55,31 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
               </ul>
             </li>
             <li>
-              <a className="responsive-body text-white hover:text-red-300">
+              <Link
+                href="../movies"
+                className="responsive-body text-white hover:text-red-300"
+              >
                 <Image src={movieSvg} alt={"movie icon"} />
                 Movies
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="responsive-body text-white hover:text-red-300">
+              <Link
+                href="../series"
+                className="responsive-body font-medium text-white hover:text-red-300"
+              >
                 <Image src={showSvg} alt={"show svg"} />
                 Series
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="responsive-body text-white hover:text-red-300">
+              <Link
+                href="../all"
+                className="responsive-body text-white hover:text-red-300"
+              >
                 <Image src={allIcon} alt={"all icon"} />
                 All
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -98,29 +108,38 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
             </details>
           </li>
           <li>
-            <a className="responsive-body font-medium text-white hover:text-red-300">
+            <Link
+              href="../movies"
+              className="responsive-body text-white hover:text-red-300"
+            >
               <Image src={movieSvg} alt={"movie icon"} />
               Movies
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="responsive-body font-medium text-white hover:text-red-300">
+            <Link
+              href="../series"
+              className="responsive-body font-medium text-white hover:text-red-300"
+            >
               <Image src={showSvg} alt={"show svg"} />
               Series
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="responsive-body font-medium text-white hover:text-red-300">
+            <Link
+              href="../all"
+              className="responsive-body text-white hover:text-red-300"
+            >
               <Image src={allIcon} alt={"all icon"} />
               All
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
         <button
           onClick={openModal}
-          className="btn responsive-body bg-[#ff0404] hover:bg-red-700 border-õõõ text-white border-none"
+          className="btn responsive-body bg-[#ff0404] hover:bg-red-700 text-white border-none"
         >
           <Image src={addCircle} alt={"add icon"} /> New
         </button>

@@ -37,18 +37,18 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
             className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow-sm"
           >
             <li>
-              <a className="responsive-body text-white hover:text-red-300">
+              <a className="responsive-body text-white hover:text-red-300 font-medium">
                 <Image src={topSvg} alt={"leaderboard icon"} />
                 Your top
               </a>
               <ul className="p-2">
                 <li>
-                  <a className="responsive-body text-white hover:text-red-300">
+                  <a className="responsive-body text-white font-light hover:text-red-300">
                     Top 5
                   </a>
                 </li>
                 <li>
-                  <a className="responsive-body text-white hover:text-red-300">
+                  <a className="responsive-body text-white font-light hover:text-red-300">
                     Top 10
                   </a>
                 </li>
@@ -57,7 +57,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
             <li>
               <Link
                 href="../movies"
-                className="responsive-body text-white hover:text-red-300"
+                className="responsive-body text-white hover:text-red-300 font-medium"
               >
                 <Image src={movieSvg} alt={"movie icon"} />
                 Movies
@@ -75,7 +75,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
             <li>
               <Link
                 href="../all"
-                className="responsive-body text-white hover:text-red-300"
+                className="responsive-body text-white hover:text-red-300 font-medium"
               >
                 <Image src={allIcon} alt={"all icon"} />
                 All
@@ -110,7 +110,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
           <li>
             <Link
               href="../movies"
-              className="responsive-body text-white hover:text-red-300"
+              className="responsive-body text-white hover:text-red-300 font-medium"
             >
               <Image src={movieSvg} alt={"movie icon"} />
               Movies
@@ -128,7 +128,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
           <li>
             <Link
               href="../all"
-              className="responsive-body text-white hover:text-red-300"
+              className="responsive-body text-white hover:text-red-300 font-medium"
             >
               <Image src={allIcon} alt={"all icon"} />
               All

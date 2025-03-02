@@ -17,9 +17,9 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
 
   const [form, setForm] = useState<WatchItem>({
     type: "Movie",
+    status: "Watched", // Initial status
     name: "",
-    description: "",
-    rating: 1,
+    rating: 0,
   });
 
   const handleChange = (
@@ -30,12 +30,12 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
-      [name]: name === "rating" ? Number(value) : value,
+      [name]: name === "rating" ? Number(value) : value, // Handle rating as a number
     }));
   };
 
   const handleSubmit = async () => {
-    if (form.name.trim() && form.rating) {
+    if (form.name.trim()) {
       // Fetch movie data
       const movieData = await fetchMovieData(form.name);
 
@@ -76,8 +76,10 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
 
   return (
     <div className="fixed inset-0 bg-black/90 z-50">
-      <div className="modal border-2 border-red-600 rounded-xl bg-black/60 max-w-md modal-open mx-auto max-h-[80vh] xl:p-4 lg:p-4 p-2 my-auto flex flex-col justify-center gap-4">
-        <h3 className="responsive-h3 text-white font-bold pb-2">New Watch?</h3>
+      <div className="modal border-2 border-red-600 rounded-xl bg-black/60 max-w-md modal-open mx-auto max-h-[90vh] xl:p-4 lg:p-4 p-2 my-auto flex flex-col justify-center gap-4">
+        <h3 className="responsive-h3 text-white font-bold pb-2">
+          Something new?
+        </h3>
         <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
           Movie or series?
         </p>
@@ -102,28 +104,44 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           className="input input-bordered w-full max-w-xs bg-black/0 border-1 text-white border-white focus:outline-none"
         />
         <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
-          Thoughts?
+          Already watched or planning?
         </p>
-        <textarea
-          name="description"
-          placeholder="Best thing I've ever seen..."
-          value={form.description}
-          onChange={handleChange}
-          className="textarea textarea-bordered border-1 w-full bg-black/0 max-w-xs text-white border-white focus:outline-none"
-        ></textarea>
-        <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
-          Rate it 1 to 5
-        </p>
-        <input
-          name="rating"
-          type="number"
-          min="1"
-          max="5"
-          placeholder="Rating (1-5)"
-          value={form.rating}
-          onChange={handleChange}
-          className="input input-bordered w-full max-w-xs bg-black/0 text-white border-1 border-white focus:outline-none"
-        />
+        <select
+          className="select select-bordered w-full max-w-xs bg-black/0 border-1 text-white border-white focus:outline-none"
+          name="status" // Use "status" as the name
+          value={form.status} // Use form.status
+          onChange={handleChange} // Use handleChange
+        >
+          <option value="Watched">Watched</option>
+          <option value="Watchlist">Watchlist/Planning</option>
+        </select>
+        {form.status === "Watched" && ( // Check form.status instead of selectedValue
+          <>
+            <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
+              Thoughts?
+            </p>
+            <textarea
+              name="description"
+              placeholder="Best thing I've ever seen..."
+              value={form.description}
+              onChange={handleChange}
+              className="textarea textarea-bordered border-1 w-full bg-black/0 max-w-xs text-white border-white focus:outline-none"
+            ></textarea>
+            <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
+              Rate it 1 to 5
+            </p>
+            <input
+              name="rating"
+              type="number"
+              min="1"
+              max="5"
+              placeholder="Rating (1-5)"
+              value={form.rating}
+              onChange={handleChange}
+              className="input input-bordered w-full max-w-xs bg-black/0 text-white border-1 border-white focus:outline-none"
+            />
+          </>
+        )}
         <div className="flex justify-between gap-4 mt-4">
           <button
             onClick={closeModal}

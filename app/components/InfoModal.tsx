@@ -88,9 +88,15 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
             </div>
           </div>
           <div className="card-actions justify-end items-center">
-            <div className="badge badge-outline responsive-body font-semibold">
-              {rating}/5
-            </div>
+            {movie.rating === 0 ? (
+              <div className="badge badge-outline responsive-body font-semibold">
+                ?/5
+              </div>
+            ) : (
+              <div className="badge badge-outline responsive-body font-semibold">
+                {movie.rating}/5
+              </div>
+            )}
             <div className="badge badge-outline responsive-body font-semibold">
               {movie.type}
             </div>

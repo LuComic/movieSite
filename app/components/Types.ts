@@ -1,8 +1,9 @@
 export interface WatchItem {
   type: "Movie" | "Series";
+  status: "Watched" | "Watchlist";
   name: string;
-  description: string;
-  rating: number;
+  description?: string;
+  rating: 0;
   posterUrl?: string; // Add this line
   releaseDate?: string; // Add release date
   genres?: string; // Add genres

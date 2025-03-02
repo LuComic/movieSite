@@ -6,6 +6,8 @@ import showSvg from "../pictures/live_tv_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.
 import { WatchListInfo } from "./WatchListInfo";
 import deleteSvg from "../pictures/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import { WatchItem } from "./Types"; // Import the WatchItem type
+import eyeOpen from "../pictures/visibility_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
+import eyeClosed from "../pictures/visibility_off_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 
 interface FilesProps {
   openInfoModal: (movie: WatchItem) => void; // Define the prop type
@@ -21,6 +23,12 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
   // Separate movies and series
   const movies = watchList.filter((item) => item.type === "Movie");
   const series = watchList.filter((item) => item.type === "Series");
+
+  const watchedMovies = movies.filter((item) => item.status === "Watched");
+  const watclistMovies = movies.filter((item) => item.status === "Watchlist");
+
+  const watchedSeries = series.filter((item) => item.status === "Watched");
+  const watchlistSeries = series.filter((item) => item.status === "Watchlist");
 
   const handleDelete = (itemToDelete: WatchItem) => {
     // Create a new list that excludes the deleted item by filtering it out
@@ -43,74 +51,172 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
             Movies
           </summary>
           <ul>
-            {movies.length > 0 ? (
-              movies.map((movie, index) => (
-                <div
-                  key={index}
-                  className="flex gap-4 items-center justify-start"
-                >
-                  <li>
-                    <a
-                      className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
-                      onClick={() => openInfoModal(movie)} // Open modal with movie data
-                    >
-                      {movie.name}
-                    </a>
-                  </li>
-                  <Image
-                    src={deleteSvg}
-                    alt="delete svg"
-                    className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
-                    onClick={() => handleDelete(movie)} // Delete movie on click
-                  />
-                </div>
-              ))
-            ) : (
-              <li>
-                <a className="text-gray-400 italic xl:text-base lg:text-sm md:text-xs sm:text-xs pr-2">
-                  No movies yet
-                </a>
-              </li>
-            )}
+            <li>
+              <details>
+                <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
+                  <Image src={eyeOpen} alt="open eye icon" />
+                  Watched
+                </summary>
+                <ul>
+                  {watchedMovies.length > 0 ? (
+                    watchedMovies.map((movie, index) => (
+                      <div
+                        key={index}
+                        className="flex gap-4 items-center justify-start"
+                      >
+                        <li>
+                          <a
+                            className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
+                            onClick={() => openInfoModal(movie)} // Open modal with movie data
+                          >
+                            {movie.name}
+                          </a>
+                        </li>
+                        <Image
+                          src={deleteSvg}
+                          alt="delete svg"
+                          className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
+                          onClick={() => handleDelete(movie)} // Delete movie on click
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <li>
+                      <a className="text-gray-400 italic xl:text-base mb-1 lg:text-sm md:text-xs sm:text-xs">
+                        No watched movies yet
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
+                  <Image src={eyeClosed} alt="open eye icon" />
+                  Watchlist
+                </summary>
+                <ul>
+                  {watclistMovies.length > 0 ? (
+                    watclistMovies.map((movie, index) => (
+                      <div
+                        key={index}
+                        className="flex gap-4 items-center justify-start"
+                      >
+                        <li>
+                          <a
+                            className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
+                            onClick={() => openInfoModal(movie)} // Open modal with movie data
+                          >
+                            {movie.name}
+                          </a>
+                        </li>
+                        <Image
+                          src={deleteSvg}
+                          alt="delete svg"
+                          className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
+                          onClick={() => handleDelete(movie)} // Delete movie on click
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <li>
+                      <a className="text-gray-400 italic xl:text-base mb-1 lg:text-sm md:text-xs sm:text-xs">
+                        Your watchlist is empty
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </details>
+            </li>
           </ul>
         </details>
       </li>
       <li>
         <details open>
-          <summary className="text-white font-bold hover:text-red-300 mt-2 mb-1 lg:text-base md:text-sm sm:text-xs">
-            <Image src={showSvg} alt={"series icon"} />
+          <summary className="text-white font-bold hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
+            <Image src={showSvg} alt={"show icon"} />
             Series
           </summary>
           <ul>
-            {series.length > 0 ? (
-              series.map((show, index) => (
-                <div
-                  key={index}
-                  className="flex gap-4 items-center justify-start"
-                >
-                  <li>
-                    <a
-                      className="text-white hover:text-red-300 cursor-pointer"
-                      onClick={() => openInfoModal(show)} // Open modal with series data
-                    >
-                      {show.name}
-                    </a>
-                  </li>
-                  <Image
-                    src={deleteSvg}
-                    alt="delete svg"
-                    className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
-                    onClick={() => handleDelete(show)} // Delete series on click
-                  />
-                </div>
-              ))
-            ) : (
-              <li>
-                <a className="text-gray-400 italic xl:text-base lg:text-sm md:text-xs sm:text-xs pr-2">
-                  No series yet
-                </a>
-              </li>
-            )}
+            <li>
+              <details>
+                <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
+                  <Image src={eyeOpen} alt="open eye icon" />
+                  Watched
+                </summary>
+                <ul>
+                  {watchedSeries.length > 0 ? (
+                    watchedSeries.map((movie, index) => (
+                      <div
+                        key={index}
+                        className="flex gap-4 items-center justify-start"
+                      >
+                        <li>
+                          <a
+                            className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
+                            onClick={() => openInfoModal(movie)} // Open modal with movie data
+                          >
+                            {movie.name}
+                          </a>
+                        </li>
+                        <Image
+                          src={deleteSvg}
+                          alt="delete svg"
+                          className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
+                          onClick={() => handleDelete(movie)} // Delete movie on click
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <li>
+                      <a className="text-gray-400 italic xl:text-base mb-1 lg:text-sm md:text-xs sm:text-xs">
+                        No watched series yet
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
+                  <Image src={eyeClosed} alt="open eye icon" />
+                  Watchlist
+                </summary>
+                <ul>
+                  {watchlistSeries.length > 0 ? (
+                    watchlistSeries.map((movie, index) => (
+                      <div
+                        key={index}
+                        className="flex gap-4 items-center justify-start"
+                      >
+                        <li>
+                          <a
+                            className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
+                            onClick={() => openInfoModal(movie)} // Open modal with movie data
+                          >
+                            {movie.name}
+                          </a>
+                        </li>
+                        <Image
+                          src={deleteSvg}
+                          alt="delete svg"
+                          className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
+                          onClick={() => handleDelete(movie)} // Delete movie on click
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <li>
+                      <a className="text-gray-400 italic xl:text-base mb-1 lg:text-sm md:text-xs sm:text-xs">
+                        Your watchlist is empty
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </details>
+            </li>
           </ul>
         </details>
       </li>

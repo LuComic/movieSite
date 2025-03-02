@@ -1,11 +1,17 @@
+// Files.tsx
 import React, { useContext } from "react";
 import Image from "next/image";
 import movieSvg from "../pictures/movie_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import showSvg from "../pictures/live_tv_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import { WatchListInfo } from "./WatchListInfo";
 import deleteSvg from "../pictures/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
+import { WatchItem } from "./Types"; // Import the WatchItem type
 
-const Files = () => {
+interface FilesProps {
+  openInfoModal: (movie: WatchItem) => void; // Define the prop type
+}
+
+const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
   const context = useContext(WatchListInfo);
   if (!context)
     throw new Error("Files must be used within a WatchListProvider");
@@ -16,12 +22,12 @@ const Files = () => {
   const movies = watchList.filter((item) => item.type === "Movie");
   const series = watchList.filter((item) => item.type === "Series");
 
-  const handleDelete = (itemToDelete: any) => {
+  const handleDelete = (itemToDelete: WatchItem) => {
     // Create a new list that excludes the deleted item by filtering it out
     const updatedList = watchList.filter((item) => item !== itemToDelete);
 
     // Update the context state by passing the new list reference
-    setWatchList(updatedList); // No need to spread the array again
+    setWatchList(updatedList);
 
     // Immediately update localStorage with the new list to ensure it reflects the deletion
     localStorage.setItem("watchList", JSON.stringify(updatedList));
@@ -44,7 +50,10 @@ const Files = () => {
                   className="flex gap-4 items-center justify-start"
                 >
                   <li>
-                    <a className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs">
+                    <a
+                      className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
+                      onClick={() => openInfoModal(movie)} // Open modal with movie data
+                    >
                       {movie.name}
                     </a>
                   </li>
@@ -80,7 +89,12 @@ const Files = () => {
                   className="flex gap-4 items-center justify-start"
                 >
                   <li>
-                    <a className="text-white hover:text-red-300">{show.name}</a>
+                    <a
+                      className="text-white hover:text-red-300 cursor-pointer"
+                      onClick={() => openInfoModal(show)} // Open modal with series data
+                    >
+                      {show.name}
+                    </a>
                   </li>
                   <Image
                     src={deleteSvg}

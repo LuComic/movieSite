@@ -134,9 +134,10 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
               name="rating"
               type="number"
               min="1"
-              max="5"
-              placeholder="Rating (1-5)"
+              max="10"
+              placeholder="Rating (1-10)"
               value={form.rating}
+              step={0.1}
               onChange={handleChange}
               className="input input-bordered w-full max-w-xs bg-black/0 text-white border-1 border-white focus:outline-none"
             />

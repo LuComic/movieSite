@@ -94,7 +94,7 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
               </div>
             ) : (
               <div className="badge badge-outline responsive-body font-semibold">
-                {movie.rating}/5
+                {movie.rating}/10
               </div>
             )}
             <div className="badge badge-outline responsive-body font-semibold">

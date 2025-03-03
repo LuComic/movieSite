@@ -26,7 +26,7 @@ const MoviePageMovies: React.FC<moviePageProps> = ({ openInfoModal }) => {
   };
 
   return (
-    <div className="relative z-50 px-60 py-10">
+    <div className="relative z-50 xl:px-60 lg:px-60 md:px-32 sm:px-10 px-10 py-10">
       <div
         className="flex gap-1 items-center justify-start pb-4 cursor-pointer w-max"
         onClick={handleBack}
@@ -59,7 +59,7 @@ const MoviePageMovies: React.FC<moviePageProps> = ({ openInfoModal }) => {
                 <p className="text-white">{movie.description}</p>
                 <div className="card-actions justify-end">
                   <p className="btn btn-primary bg-black/0 border-none text-white shadow-none">
-                    {movie.rating}/5
+                    {movie.rating}/10
                   </p>
                 </div>
               </div>

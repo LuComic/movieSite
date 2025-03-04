@@ -5,9 +5,13 @@ import { WatchListInfo } from "./WatchListInfo"; // Import context
 
 interface MainContentProps {
   openInfoModal: (movie: any) => void; // Update to accept a movie parameter
+  openAddToWatchedModal: (movie: any) => void;
 }
 
-const MainContent: React.FC<MainContentProps> = ({ openInfoModal }) => {
+const MainContent: React.FC<MainContentProps> = ({
+  openInfoModal,
+  openAddToWatchedModal,
+}) => {
   const context = useContext(WatchListInfo);
   if (!context)
     throw new Error("MainContent must be used within a WatchListProvider");
@@ -22,7 +26,11 @@ const MainContent: React.FC<MainContentProps> = ({ openInfoModal }) => {
 
   return (
     <div className="w-screen min-h-screen h-auto py-4 flex justify-center items-center pb-20">
-      <FilesAndMovies key={refreshKey} openInfoModal={openInfoModal} />
+      <FilesAndMovies
+        key={refreshKey}
+        openInfoModal={openInfoModal}
+        openAddToWatchedModal={openAddToWatchedModal}
+      />
       {/* FilesAndMovies will re-render when key changes */}
     </div>
   );

@@ -10,8 +10,10 @@ const RecentWatches = () => {
 
   const { watchList } = context;
 
+  const watched = watchList.filter((item) => item.status === "Watched");
+
   // Get the last 3 items (or less if there aren't enough)
-  const recentWatches = watchList.slice(-3).reverse();
+  const recentWatches = watched.slice(-3).reverse();
 
   return (
     <div className="border-red-600 border-2 rounded-lg p-4 bg-black/60">

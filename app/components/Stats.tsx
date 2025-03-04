@@ -14,9 +14,19 @@ const Stats: React.FC = () => {
   const { watchList } = context;
 
   // Calculate stats dynamically
-  const totalMovies = watchList.filter((item) => item.type === "Movie").length;
-  const totalSeries = watchList.filter((item) => item.type === "Series").length;
-  const totalWatched = watchList.length; // Sum of movies and series
+  const totalWatched = watchList.filter(
+    (item) => item.status === "Watched"
+  ).length; // Sum of movies and series
+  // Separate movies and series
+  const movies = watchList.filter((item) => item.type === "Movie");
+  const series = watchList.filter((item) => item.type === "Series");
+
+  const watchedMovies = movies.filter(
+    (item) => item.status === "Watched"
+  ).length;
+  const watchedSeries = series.filter(
+    (item) => item.status === "Watched"
+  ).length;
 
   // Determine the title based on total watched count
   let title = "Beginner Fiend";
@@ -33,7 +43,7 @@ const Stats: React.FC = () => {
           <Image src={movieSvg} alt={"movie icon"} />
           Total movies
         </div>
-        <div className="stat-value text-white">{totalMovies}</div>
+        <div className="stat-value text-white">{watchedMovies}</div>
         <div className="stat-desc text-white">All time</div>
       </div>
 
@@ -42,7 +52,7 @@ const Stats: React.FC = () => {
           <Image src={showSvg} alt={"series icon"} />
           Total series
         </div>
-        <div className="stat-value text-white">{totalSeries}</div>
+        <div className="stat-value text-white">{watchedSeries}</div>
         <div className="stat-desc text-white">All time</div>
       </div>
 

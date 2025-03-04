@@ -8,7 +8,7 @@ interface WatchListContextType {
   selectedItem: WatchItem | null;
   addItem: (item: WatchItem) => void;
   setSelectedItem: (item: WatchItem | null) => void;
-  setWatchList: (watchList: WatchItem[]) => void; // Add setWatchList here
+  setWatchList: (watchList: WatchItem[]) => void;
 }
 
 export const WatchListInfo = createContext<WatchListContextType | undefined>(

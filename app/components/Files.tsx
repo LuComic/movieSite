@@ -11,9 +11,13 @@ import eyeClosed from "../pictures/visibility_off_24dp_E8EAED_FILL0_wght400_GRAD
 
 interface FilesProps {
   openInfoModal: (movie: WatchItem) => void; // Define the prop type
+  openAddToWatchedModal: (movie: WatchItem) => void;
 }
 
-const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
+const Files: React.FC<FilesProps> = ({
+  openInfoModal,
+  openAddToWatchedModal,
+}) => {
   const context = useContext(WatchListInfo);
   if (!context)
     throw new Error("Files must be used within a WatchListProvider");
@@ -31,15 +35,20 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
   const watchlistSeries = series.filter((item) => item.status === "Watchlist");
 
   const handleDelete = (itemToDelete: WatchItem) => {
-    // Create a new list that excludes the deleted item by filtering it out
-    const updatedList = watchList.filter((item) => item !== itemToDelete);
+    // Filter using name and type comparison
+    const updatedList = watchList.filter(
+      (item) =>
+        !(item.name === itemToDelete.name && item.type === itemToDelete.type)
+    );
 
-    // Update the context state by passing the new list reference
-    setWatchList(updatedList);
+    // Log for debugging
+    console.log("Before delete - watchList:", watchList);
+    console.log("Item to delete:", itemToDelete);
+    console.log("After delete - updatedList:", updatedList);
 
-    // Immediately update localStorage with the new list to ensure it reflects the deletion
+    // Update both state and localStorage synchronously
+    setWatchList([...updatedList]); // Create new array reference
     localStorage.setItem("watchList", JSON.stringify(updatedList));
-    window.location.reload();
   };
 
   return (
@@ -52,7 +61,7 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
           </summary>
           <ul>
             <li>
-              <details>
+              <details open>
                 <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
                   <Image src={eyeOpen} alt="open eye icon" />
                   Watched
@@ -75,7 +84,7 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
                         <Image
                           src={deleteSvg}
                           alt="delete svg"
-                          className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
+                          className="bg-red-700 rounded-sm p-1 cursor-pointer hover:bg-red-800"
                           onClick={() => handleDelete(movie)} // Delete movie on click
                         />
                       </div>
@@ -91,7 +100,7 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
               </details>
             </li>
             <li>
-              <details>
+              <details open>
                 <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
                   <Image src={eyeClosed} alt="open eye icon" />
                   Watchlist
@@ -112,9 +121,15 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
                           </a>
                         </li>
                         <Image
+                          src={eyeOpen}
+                          alt="add to watched icon"
+                          className="bg-amber-500 rounded-sm p-1 cursor-pointer hover:bg-amber-600"
+                          onClick={() => openAddToWatchedModal(movie)}
+                        />
+                        <Image
                           src={deleteSvg}
-                          alt="delete svg"
-                          className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
+                          alt="delete icon"
+                          className="bg-red-700 rounded-sm p-1 cursor-pointer hover:bg-red-800"
                           onClick={() => handleDelete(movie)} // Delete movie on click
                         />
                       </div>
@@ -140,7 +155,7 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
           </summary>
           <ul>
             <li>
-              <details>
+              <details open>
                 <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
                   <Image src={eyeOpen} alt="open eye icon" />
                   Watched
@@ -163,7 +178,7 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
                         <Image
                           src={deleteSvg}
                           alt="delete svg"
-                          className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
+                          className="bg-red-700 rounded-sm p-1 cursor-pointer hover:bg-red-800"
                           onClick={() => handleDelete(movie)} // Delete movie on click
                         />
                       </div>
@@ -179,7 +194,7 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
               </details>
             </li>
             <li>
-              <details>
+              <details open>
                 <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
                   <Image src={eyeClosed} alt="open eye icon" />
                   Watchlist
@@ -200,9 +215,15 @@ const Files: React.FC<FilesProps> = ({ openInfoModal }) => {
                           </a>
                         </li>
                         <Image
+                          src={eyeOpen}
+                          alt="add to watched icon"
+                          className="bg-amber-500 rounded-sm p-1 cursor-pointer hover:bg-amber-600"
+                          onClick={() => openAddToWatchedModal(movie)}
+                        />
+                        <Image
                           src={deleteSvg}
                           alt="delete svg"
-                          className="bg-red-700 rounded-full p-1 cursor-pointer hover:bg-red-800"
+                          className="bg-red-700 rounded-sm p-1 cursor-pointer hover:bg-red-800"
                           onClick={() => handleDelete(movie)} // Delete movie on click
                         />
                       </div>

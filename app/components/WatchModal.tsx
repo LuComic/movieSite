@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import { WatchListInfo } from "./WatchListInfo";
 import { WatchItem } from "./Types";
 import { fetchMovieData } from "./tmdb"; // Import the fetch function
+import { v4 as uuidv4 } from "uuid";
 
 interface ModalProps {
   closeModal: () => void;
@@ -15,7 +16,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
     throw new Error("WatchInputModal must be used within a WatchListProvider");
   const { addItem } = context;
 
-  const [form, setForm] = useState<WatchItem>({
+  const [form, setForm] = useState<Omit<WatchItem, "id">>({
     type: "Movie",
     status: "Watched", // Initial status
     name: "",
@@ -59,9 +60,12 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
               .join(", ")
           : "Cast unavailable";
 
+        const id = uuidv4();
+
         // Add the new details to the watch item
         const newItem: WatchItem = {
           ...form,
+          id,
           posterUrl,
           releaseDate,
           genres,
@@ -76,7 +80,11 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
 
   return (
     <div className="fixed inset-0 bg-black/90 z-50">
-      <div className="modal border-2 border-red-600 rounded-xl bg-black/60 max-w-md modal-open mx-auto max-h-[90vh] xl:p-4 lg:p-4 p-2 my-auto flex flex-col justify-center gap-4">
+      <div
+        className={`modal border-2 border-red-600 rounded-xl bg-black/60 max-w-md modal-open mx-auto ${
+          form.status === "Watchlist" ? "max-h-[60vh]" : "max-h-[90vh]"
+        } xl:p-4 lg:p-4 p-2 my-auto flex flex-col justify-center gap-4`}
+      >
         <h3 className="responsive-h3 text-white font-bold pb-2">
           Something new?
         </h3>
@@ -128,7 +136,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
               className="textarea textarea-bordered border-1 w-full bg-black/0 max-w-xs text-white border-white focus:outline-none"
             ></textarea>
             <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
-              Rate it 1 to 5
+              Rate it 1 to 10
             </p>
             <input
               name="rating"

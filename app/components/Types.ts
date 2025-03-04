@@ -1,4 +1,5 @@
 export interface WatchItem {
+  id: string; // Add this line
   type: "Movie" | "Series";
   status: "Watched" | "Watchlist";
   name: string;

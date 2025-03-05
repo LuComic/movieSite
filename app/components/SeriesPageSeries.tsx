@@ -17,7 +17,6 @@ const SeriesPageSeries: React.FC<seriesPageProps> = ({ openInfoModal }) => {
 
   const { watchList } = context;
 
-  // Separate movies and series
   const series = watchList.filter((item) => item.type === "Series");
 
   const router = useRouter();
@@ -32,7 +31,7 @@ const SeriesPageSeries: React.FC<seriesPageProps> = ({ openInfoModal }) => {
         onClick={handleBack}
       >
         <Image src={backSvg} alt="back icon" />
-        <p className="text-white text-md">Home</p>
+        <p className="text-white text-md hover:text-red-300">Home</p>
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">Series</h3>
       <div className="h-auto grid lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 items-start justify-center">
@@ -58,9 +57,15 @@ const SeriesPageSeries: React.FC<seriesPageProps> = ({ openInfoModal }) => {
                 <h2 className="card-title text-white">{show.name}</h2>
                 <p className="text-white">{show.description}</p>
                 <div className="card-actions justify-end">
-                  <p className="btn btn-primary bg-black/0 border-none text-white shadow-none">
-                    {show.rating}/10
-                  </p>
+                  {show.rating === 0 ? (
+                    <p className="btn btn-primary bg-black/0 border-none text-white shadow-none">
+                      ?/10
+                    </p>
+                  ) : (
+                    <p className="btn btn-primary bg-black/0 border-none text-white shadow-none">
+                      {show.rating}/10
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

@@ -59,33 +59,96 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
                   </Link>
                 </li>
               </ul>
-            </li>
-            <li>
-              <Link
-                href="../movies"
-                className="responsive-body text-white hover:text-red-300 font-medium"
-              >
+              <a className="responsive-body text-white hover:text-red-300 font-medium">
                 <Image src={movieSvg} alt={"movie icon"} />
                 Movies
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="../series"
-                className="responsive-body font-medium text-white hover:text-red-300"
-              >
-                <Image src={showSvg} alt={"show svg"} />
+              </a>
+              <ul className="p-2">
+                <li>
+                  <Link
+                    href="../movies-watched"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watched
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../movies-watchlist"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../movies"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    All
+                  </Link>
+                </li>
+              </ul>
+              <a className="responsive-body text-white hover:text-red-300 font-medium">
+                <Image src={showSvg} alt={"show icon"} />
                 Series
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="../all"
-                className="responsive-body text-white hover:text-red-300 font-medium"
-              >
+              </a>
+              <ul className="p-2">
+                <li>
+                  <Link
+                    href="../series-watched"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watched
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../series-watchlist"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../series"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    All
+                  </Link>
+                </li>
+              </ul>
+              <a className="responsive-body text-white hover:text-red-300 font-medium">
                 <Image src={allIcon} alt={"all icon"} />
                 All
-              </Link>
+              </a>
+              <ul className="p-2">
+                <li>
+                  <Link
+                    href="../all-watched"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watched
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../all-watchlist"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../all"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    All
+                  </Link>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -120,31 +183,106 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
             </details>
           </li>
           <li>
-            <Link
-              href="../movies"
-              className="responsive-body text-white hover:text-red-300 font-medium"
-            >
-              <Image src={movieSvg} alt={"movie icon"} />
-              Movies
-            </Link>
+            <details>
+              <summary className="responsive-body font-medium text-white hover:text-red-300">
+                <Image src={movieSvg} alt={"movie icon"} />
+                Movies
+              </summary>
+              <ul className="p-2 bg-black">
+                <li>
+                  <Link
+                    href="../movies-watched"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    Watched
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../movies-watchlist"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../movies"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    All
+                  </Link>
+                </li>
+              </ul>
+            </details>
           </li>
           <li>
-            <Link
-              href="../series"
-              className="responsive-body font-medium text-white hover:text-red-300"
-            >
-              <Image src={showSvg} alt={"show svg"} />
-              Series
-            </Link>
+            <details>
+              <summary className="responsive-body font-medium text-white hover:text-red-300">
+                <Image src={showSvg} alt={"show icon"} />
+                Series
+              </summary>
+              <ul className="p-2 bg-black">
+                <li>
+                  <Link
+                    href="../series-watched"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    Watched
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../series-watchlist"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../series"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    All
+                  </Link>
+                </li>
+              </ul>
+            </details>
           </li>
           <li>
-            <Link
-              href="../all"
-              className="responsive-body text-white hover:text-red-300 font-medium"
-            >
-              <Image src={allIcon} alt={"all icon"} />
-              All
-            </Link>
+            <details>
+              <summary className="responsive-body font-medium text-white hover:text-red-300">
+                <Image src={allIcon} alt={"all icon"} />
+                All
+              </summary>
+              <ul className="p-2 bg-black">
+                <li>
+                  <Link
+                    href="../all-watched"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    Watched
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../all-watchlist"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../all"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    All
+                  </Link>
+                </li>
+              </ul>
+            </details>
           </li>
         </ul>
       </div>

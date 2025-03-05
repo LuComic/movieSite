@@ -9,7 +9,7 @@ import InfoModal from "../components/InfoModal";
 import { WatchItem } from "../components/Types";
 import AllPageAll from "../components/AllPageAll";
 
-const moviePage = () => {
+const allPage = () => {
   const [isInfoModalOpen, setInfoModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<WatchItem | null>(null); // Store selected movie
 
@@ -39,4 +39,4 @@ const moviePage = () => {
   );
 };
 
-export default moviePage;
+export default allPage;

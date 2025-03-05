@@ -29,7 +29,7 @@ const TopAllComponent: React.FC<TopAllProps> = ({ openInfoModal }) => {
         onClick={handleBack}
       >
         <Image src={backSvg} alt="back icon" />
-        <p className="text-white text-md">Home</p>
+        <p className="text-white text-md hover:text-red-300">Home</p>
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">Top All</h3>
       <div className="h-auto flex flex-col gap-4 items-start justify-center cursor-pointer">

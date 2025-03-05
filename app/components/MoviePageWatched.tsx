@@ -6,18 +6,23 @@ import backSvg from "../pictures/arrow_back_ios_24dp_E8EAED_FILL0_wght400_GRAD0_
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-interface moviePageProps {
+interface moviePageWatchedProps {
   openInfoModal: (movie: any) => void; // Update to accept a movie parameter
 }
 
-const MoviePageMovies: React.FC<moviePageProps> = ({ openInfoModal }) => {
+const MoviePageWatched: React.FC<moviePageWatchedProps> = ({
+  openInfoModal,
+}) => {
   const context = useContext(WatchListInfo);
   if (!context)
     throw new Error("Files must be used within a WatchListProvider");
 
   const { watchList } = context;
 
-  const movies = watchList.filter((item) => item.type === "Movie");
+  // Separate movies and series
+  const movies = watchList.filter(
+    (item) => item.type === "Movie" && item.status === "Watched"
+  );
 
   const router = useRouter();
   const handleBack = () => {
@@ -33,7 +38,9 @@ const MoviePageMovies: React.FC<moviePageProps> = ({ openInfoModal }) => {
         <Image src={backSvg} alt="back icon" />
         <p className="text-white text-md hover:text-red-300">Home</p>
       </div>
-      <h3 className="responsive-h3 text-white font-bold pb-6">Movies</h3>
+      <h3 className="responsive-h3 text-white font-bold pb-6">
+        Movies you have watched
+      </h3>
       <div className="h-auto grid lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 items-start justify-center">
         {movies.length > 0 ? (
           movies.map((movie, index) => (
@@ -82,4 +89,4 @@ const MoviePageMovies: React.FC<moviePageProps> = ({ openInfoModal }) => {
   );
 };
 
-export default MoviePageMovies;
+export default MoviePageWatched;

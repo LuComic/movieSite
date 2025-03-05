@@ -7,9 +7,9 @@ import Image from "next/image";
 import Sky from "../pictures/stacked-waves-haikei-4.svg";
 import InfoModal from "../components/InfoModal";
 import { WatchItem } from "../components/Types";
-import SeriesPageSeries from "../components/SeriesPageSeries";
+import SeriesWatched from "../components/SeriesWatched";
 
-const seriesPage = () => {
+const seriesWatchedPage = () => {
   const [isInfoModalOpen, setInfoModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<WatchItem | null>(null); // Store selected movie
 
@@ -25,7 +25,7 @@ const seriesPage = () => {
           <div className="absolute top-0 left-0 w-screen h-full">
             <Image src={Sky} alt="Background" fill className="object-cover" />
           </div>
-          <SeriesPageSeries openInfoModal={openInfoModal} />
+          <SeriesWatched openInfoModal={openInfoModal} />
           {isInfoModalOpen && selectedMovie && (
             <InfoModal
               closeInfoModal={() => setInfoModalOpen(false)}
@@ -39,4 +39,4 @@ const seriesPage = () => {
   );
 };
 
-export default seriesPage;
+export default seriesWatchedPage;

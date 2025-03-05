@@ -35,6 +35,19 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
     }));
   };
 
+  const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value);
+    if (value > 10) {
+      // If value is greater than 10, set it to 10
+      handleChange({
+        ...e,
+        target: { ...e.target, value: "10", name: "rating" },
+      });
+    } else {
+      handleChange(e);
+    }
+  };
+
   const handleSubmit = async () => {
     if (form.name.trim()) {
       // Fetch movie data
@@ -144,9 +157,9 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
               min="1"
               max="10"
               placeholder="Rating (1-10)"
-              value={form.rating}
+              value={form.rating === 0 ? "" : form.rating}
               step={0.1}
-              onChange={handleChange}
+              onChange={handleRatingChange}
               className="input input-bordered w-full max-w-xs bg-black/0 text-white border-1 border-white focus:outline-none"
             />
           </>

@@ -61,8 +61,8 @@ const Files: React.FC<FilesProps> = ({
           </summary>
           <ul>
             <li>
-              <details open>
-                <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
+              <details>
+                <summary className="text-white hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
                   <Image src={eyeOpen} alt="open eye icon" />
                   Watched
                 </summary>
@@ -73,7 +73,7 @@ const Files: React.FC<FilesProps> = ({
                         key={index}
                         className="flex gap-4 items-center justify-start"
                       >
-                        <li>
+                        <li className="ml-5">
                           <a
                             className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
                             onClick={() => openInfoModal(movie)} // Open modal with movie data
@@ -100,8 +100,8 @@ const Files: React.FC<FilesProps> = ({
               </details>
             </li>
             <li>
-              <details open>
-                <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
+              <details>
+                <summary className="text-white hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
                   <Image src={eyeClosed} alt="open eye icon" />
                   Watchlist
                 </summary>
@@ -112,7 +112,7 @@ const Files: React.FC<FilesProps> = ({
                         key={index}
                         className="flex gap-4 items-center justify-start"
                       >
-                        <li>
+                        <li className="ml-5">
                           <a
                             className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
                             onClick={() => openInfoModal(movie)} // Open modal with movie data
@@ -155,8 +155,8 @@ const Files: React.FC<FilesProps> = ({
           </summary>
           <ul>
             <li>
-              <details open>
-                <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
+              <details>
+                <summary className="text-white hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
                   <Image src={eyeOpen} alt="open eye icon" />
                   Watched
                 </summary>
@@ -167,7 +167,7 @@ const Files: React.FC<FilesProps> = ({
                         key={index}
                         className="flex gap-4 items-center justify-start"
                       >
-                        <li>
+                        <li className="ml-5">
                           <a
                             className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
                             onClick={() => openInfoModal(movie)} // Open modal with movie data
@@ -194,8 +194,8 @@ const Files: React.FC<FilesProps> = ({
               </details>
             </li>
             <li>
-              <details open>
-                <summary className="text-white font-medium hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
+              <details>
+                <summary className="text-white hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">
                   <Image src={eyeClosed} alt="open eye icon" />
                   Watchlist
                 </summary>
@@ -206,7 +206,7 @@ const Files: React.FC<FilesProps> = ({
                         key={index}
                         className="flex gap-4 items-center justify-start"
                       >
-                        <li>
+                        <li className="ml-5">
                           <a
                             className="text-white hover:text-red-300 xl:text-base lg:text-base md:text-sm sm:text-xs cursor-pointer"
                             onClick={() => openInfoModal(movie)} // Open modal with movie data

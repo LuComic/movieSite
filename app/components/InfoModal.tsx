@@ -25,13 +25,13 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
 
   return (
     <div className="fixed inset-0 bg-black/90 z-50 flex justify-center items-center p-4">
-      <div className="card lg:card-side w-auto aspect-5/3 shadow-sm mx-auto my-auto rounded-xl overflow-y-auto bg-black">
+      <div className="card lg:card-side w-auto shadow-sm mx-auto my-auto rounded-xl overflow-y-auto bg-black">
         <figure className="relative aspect-auto">
           {movie.posterUrl ? (
             <img
               src={movie.posterUrl}
               alt={movie.name}
-              className="w-full h-full object-contain" // Change object-cover to object-contain
+              className="w-[60vw] h-full xl:max-h-full xl:max-w-[80vw] lg:max-w-[80vw] md:max-w-[40vw] sm:max-w-[50vw] object-contain" // Change object-cover to object-contain
             />
           ) : (
             <div className="w-full h-96 bg-gray-700 animate-pulse"></div>
@@ -46,7 +46,7 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
           className="absolute top-2 left-2 bg-black/30 rounded-full p-1 cursor-pointer" // Add padding and cursor
           onClick={handleClose}
         />
-        <div className="card-body bg-gradient-to-t from-red-950/60 from-30% to-black/60 rounded-br-xl rounded-tl-xl w-1/3">
+        <div className="card-body bg-gradient-to-t from-red-950/60 from-30% to-black/60 rounded-br-xl rounded-tl-xl w-full">
           <h3 className="responsive-h3 font-semibold text-white mb-2">
             {movie.name}
           </h3>

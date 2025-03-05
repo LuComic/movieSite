@@ -32,11 +32,11 @@ const AllPageAll: React.FC<allPageProps> = ({ openInfoModal }) => {
         <p className="text-white text-md">Home</p>
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">All</h3>
-      <div className="h-auto grid lg:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 items-start justify-center">
+      <div className="h-auto grid lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 items-start justify-center">
         {watchList.length > 0 ? (
           watchList.map((cinema, index) => (
             <div
-              className="card card-side shadow-sm w-auto max-w-[25vw] h-full max-h-[40vh] rounded-xl overflow-y-auto cursor-pointer"
+              className="card card-side shadow-sm w-auto mx-auto h-full max-h-[40vh] rounded-xl overflow-y-auto cursor-pointer xl:max-w-[25vw]"
               key={index}
               onClick={() => openInfoModal(cinema)} // Open modal with movie data
             >

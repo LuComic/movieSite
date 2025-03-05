@@ -37,7 +37,7 @@ const RecentWatches = () => {
                 <tr key={index}>
                   <th className="text-white">{index + 1}</th>
                   <td className="text-white">{item.name}</td>
-                  <td className="text-white">{item.rating}/5</td>
+                  <td className="text-white">{item.rating}/10</td>
                   <td className="text-white">{item.type}</td>
                 </tr>
               ))

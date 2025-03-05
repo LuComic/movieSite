@@ -39,18 +39,24 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
             <li>
               <a className="responsive-body text-white hover:text-red-300 font-medium">
                 <Image src={topSvg} alt={"leaderboard icon"} />
-                Your top
+                Your rankings
               </a>
               <ul className="p-2">
                 <li>
-                  <a className="responsive-body text-white font-light hover:text-red-300">
-                    Top 5
-                  </a>
+                  <Link
+                    href="../top-3"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Top 3s
+                  </Link>
                 </li>
                 <li>
-                  <a className="responsive-body text-white font-light hover:text-red-300">
-                    Top 10
-                  </a>
+                  <Link
+                    href="../top-all"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    All rankings
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -91,18 +97,24 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
             <details>
               <summary className="responsive-body font-medium text-white hover:text-red-300">
                 <Image src={topSvg} alt={"leaderboard icon"} />
-                Your top
+                Your rankings
               </summary>
               <ul className="p-2 bg-black">
                 <li>
-                  <a className="responsive-body font-light text-white hover:text-red-300">
-                    Top 5
-                  </a>
+                  <Link
+                    href="../top-3"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    Top 3s
+                  </Link>
                 </li>
                 <li>
-                  <a className="responsive-body font-light text-white hover:text-red-300">
-                    Top 10
-                  </a>
+                  <Link
+                    href="../top-all"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                  >
+                    All rankings
+                  </Link>
                 </li>
               </ul>
             </details>

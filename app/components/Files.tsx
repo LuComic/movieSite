@@ -52,7 +52,7 @@ const Files: React.FC<FilesProps> = ({
   };
 
   return (
-    <ul className="menu pb-3 h-full xl:menu-lg lg:menu-md md:menu-sm sm:menu-xs bg-black/60 rounded-lg w-full max-w-lg row-span-2 mx-auto border-red-600 border-2">
+    <ul className="menu pb-3 h-full xl:menu-lg lg:menu-md md:menu-sm sm:menu-xs menu-xs bg-black/60 rounded-lg w-full max-w-lg row-span-2 mx-auto border-red-600 border-2">
       <li>
         <details open>
           <summary className="text-white font-bold hover:text-red-300 mb-1 lg:text-base md:text-sm sm:text-xs">

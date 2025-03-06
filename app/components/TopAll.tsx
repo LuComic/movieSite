@@ -23,7 +23,7 @@ const TopAllComponent: React.FC<TopAllProps> = ({ openInfoModal }) => {
   };
 
   return (
-    <div className="relative z-50 xl:px-60 lg:px-60 md:px-32 sm:px-10 px-10 py-10">
+    <div className="relative z-30 xl:px-60 lg:px-60 md:px-32 sm:px-10 px-10 py-10">
       <div
         className="flex gap-1 items-center justify-start pb-4 cursor-pointer w-max"
         onClick={handleBack}
@@ -31,7 +31,7 @@ const TopAllComponent: React.FC<TopAllProps> = ({ openInfoModal }) => {
         <Image src={backSvg} alt="back icon" />
         <p className="text-white text-md hover:text-red-300">Back</p>
       </div>
-      <h3 className="responsive-h3 text-white font-bold pb-6">Top All</h3>
+      <h3 className="responsive-h3 text-white font-bold pb-6">All rankings</h3>
       <div className="h-auto flex flex-col gap-4 items-start justify-center cursor-pointer">
         {watchList.length > 0 ? (
           // Sort watchList by rating in descending order and filter out items without ratings

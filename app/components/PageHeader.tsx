@@ -199,7 +199,9 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
             </ul>
           )}
         </div>
-        <a className="font-semibold responsive-h3 text-white">CinemaFreak</a>
+        <Link href="/" className="font-semibold responsive-h3 text-white">
+          CinemaFreak
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-2">

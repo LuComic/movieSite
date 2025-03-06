@@ -19,23 +19,15 @@ const moviesWatchedPage = () => {
   };
 
   return (
-    <WatchListProvider>
-      <main className="bg-[#ff0404] h-auto">
-        <div className="min-h-screen">
-          <div className="absolute top-0 left-0 w-screen h-full">
-            <Image src={Sky} alt="Background" fill className="object-cover" />
-          </div>
-          <MoviePageWatched openInfoModal={openInfoModal} />
-          {isInfoModalOpen && selectedMovie && (
-            <InfoModal
-              closeInfoModal={() => setInfoModalOpen(false)}
-              movie={selectedMovie}
-            />
-          )}
-        </div>
-        <Footer />
-      </main>
-    </WatchListProvider>
+    <div className="min-h-screen">
+      <MoviePageWatched openInfoModal={openInfoModal} />
+      {isInfoModalOpen && selectedMovie && (
+        <InfoModal
+          closeInfoModal={() => setInfoModalOpen(false)}
+          movie={selectedMovie}
+        />
+      )}
+    </div>
   );
 };
 

@@ -40,7 +40,7 @@ const Top3Component: React.FC<Top3Props> = ({ openInfoModal }) => {
         onClick={handleBack}
       >
         <Image src={backSvg} alt="back icon" />
-        <p className="text-white text-md hover:text-red-300">Home</p>
+        <p className="text-white text-md hover:text-red-300">Back</p>
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">Top 3s</h3>
 

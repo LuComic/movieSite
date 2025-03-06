@@ -30,13 +30,13 @@ const MoviePageWatched: React.FC<moviePageWatchedProps> = ({
   };
 
   return (
-    <div className="relative z-50 xl:px-60 lg:px-60 md:px-32 sm:px-10 px-10 py-10">
+    <div className="relative z-30 xl:px-60 lg:px-60 md:px-32 sm:px-10 px-10 py-10">
       <div
         className="flex gap-1 items-center justify-start pb-4 cursor-pointer w-max"
         onClick={handleBack}
       >
         <Image src={backSvg} alt="back icon" />
-        <p className="text-white text-md hover:text-red-300">Home</p>
+        <p className="text-white text-md hover:text-red-300">Back</p>
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">
         Movies you have watched

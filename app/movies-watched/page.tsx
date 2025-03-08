@@ -1,15 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import Footer from "../components/Footer";
-import { WatchListProvider } from "../components/WatchListInfo";
-import Image from "next/image";
-import Sky from "../pictures/stacked-waves-haikei-4.svg";
 import InfoModal from "../components/InfoModal";
 import { WatchItem } from "../components/Types";
 import MoviePageWatched from "../components/MoviePageWatched";
 
-const moviesWatchedPage = () => {
+const MoviesWatchedPage = () => {
   const [isInfoModalOpen, setInfoModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<WatchItem | null>(null); // Store selected movie
 
@@ -31,4 +27,4 @@ const moviesWatchedPage = () => {
   );
 };
 
-export default moviesWatchedPage;
+export default MoviesWatchedPage;

@@ -5,7 +5,7 @@ import MoviePageMovies from "../components/MoviePageMovies";
 import InfoModal from "../components/InfoModal";
 import { WatchItem } from "../components/Types";
 
-const moviePage = () => {
+const MoviePage = () => {
   const [isInfoModalOpen, setInfoModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<WatchItem | null>(null); // Store selected movie
 
@@ -27,4 +27,4 @@ const moviePage = () => {
   );
 };
 
-export default moviePage;
+export default MoviePage;

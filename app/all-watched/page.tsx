@@ -5,7 +5,7 @@ import InfoModal from "../components/InfoModal";
 import { WatchItem } from "../components/Types";
 import AllPageWatched from "../components/AllPageWatched";
 
-const allWatchedPage = () => {
+const AllWatchedPage = () => {
   const [isInfoModalOpen, setInfoModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<WatchItem | null>(null); // Store selected movie
 
@@ -27,4 +27,4 @@ const allWatchedPage = () => {
   );
 };
 
-export default allWatchedPage;
+export default AllWatchedPage;

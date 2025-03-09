@@ -8,7 +8,6 @@ import { WatchItem } from "./components/Types"; // Import the WatchItem type
 import AddToWatchedModal from "./components/AddToWatched";
 
 export default function Home() {
-  const [isModalOpen, setModalOpen] = useState(false);
   const [isInfoModalOpen, setInfoModalOpen] = useState(false);
   const [isAddToWatchedModalOpen, setAddToWatchedModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<WatchItem | null>(null);

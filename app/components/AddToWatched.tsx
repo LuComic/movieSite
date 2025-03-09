@@ -37,6 +37,19 @@ const AddToWatchedModal: React.FC<AddToWatchedProps> = ({
     }));
   };
 
+  const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value);
+    if (value > 10) {
+      // If value is greater than 10, set it to 10
+      handleChange({
+        ...e,
+        target: { ...e.target, value: "10", name: "rating" },
+      });
+    } else {
+      handleChange(e);
+    }
+  };
+
   const handleSubmit = () => {
     // Create updated watchlist with the modified movie
     const updatedWatchList = watchList.map((item) =>
@@ -79,12 +92,11 @@ const AddToWatchedModal: React.FC<AddToWatchedProps> = ({
           min="1"
           max="10"
           placeholder="Rating (1-10)"
-          value={form.rating}
+          value={form.rating === 0 ? "" : form.rating}
           step={0.1}
-          onChange={handleChange}
+          onChange={handleRatingChange}
           className="input input-bordered w-full max-w-xs bg-black/0 text-white border-1 border-white focus:outline-none"
         />
-
         <div className="flex justify-between gap-4 mt-4">
           <button
             onClick={closeAddToWatchedModal}

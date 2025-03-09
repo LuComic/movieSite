@@ -1,10 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { WatchItem } from "./Types";
 import closeSvg from "../pictures/cancel_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import Image from "next/image";
-import { MovieData } from "./tmdb"; // Import the fetch function
 
 interface ModalProps {
   closeInfoModal: () => void;
@@ -12,12 +10,7 @@ interface ModalProps {
 }
 
 const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
-  const [movieData, setMovieData] = useState<MovieData | null>(null);
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
-
   const description = movie.description;
-  const rating = movie.rating;
-  const poster = movie.posterUrl;
 
   const handleClose = () => {
     closeInfoModal();

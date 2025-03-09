@@ -5,9 +5,10 @@ import { WatchListInfo } from "./WatchListInfo";
 import backSvg from "../pictures/arrow_back_ios_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { WatchItem } from "./Types";
 
 interface moviePageProps {
-  openInfoModal: (movie: any) => void; // Update to accept a movie parameter
+  openInfoModal: (movie: WatchItem) => void; // Update to accept a movie parameter
 }
 
 const MoviePageMovies: React.FC<moviePageProps> = ({ openInfoModal }) => {

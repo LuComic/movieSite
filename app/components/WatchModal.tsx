@@ -114,7 +114,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           <option value="Series">Series</option>
         </select>
         <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
-          What's the name?
+          What&apos;s the name?
         </p>
         <input
           type="text"

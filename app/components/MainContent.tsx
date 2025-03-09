@@ -2,10 +2,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import FilesAndMovies from "./FilesAndMovies";
 import { WatchListInfo } from "./WatchListInfo"; // Import context
+import { WatchItem } from "./Types";
 
 interface MainContentProps {
-  openInfoModal: (movie: any) => void; // Update to accept a movie parameter
-  openAddToWatchedModal: (movie: any) => void;
+  openInfoModal: (movie: WatchItem) => void; // Update to accept a movie parameter
+  openAddToWatchedModal: (movie: WatchItem) => void;
 }
 
 const MainContent: React.FC<MainContentProps> = ({

@@ -200,7 +200,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
           )}
         </div>
         <Link href="/" className="font-semibold responsive-h3 text-white">
-          CinemaFreak
+          StreamList
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

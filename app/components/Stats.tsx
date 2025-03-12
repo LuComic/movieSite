@@ -34,7 +34,7 @@ const Stats: React.FC = () => {
   else if (totalWatched >= 11 && totalWatched <= 20) title = "Casual Fiend";
   else if (totalWatched >= 21 && totalWatched <= 25)
     title = "Professional Fiend";
-  else if (totalWatched >= 26) title = "Get a Life";
+  else if (totalWatched >= 26) title = "Out Of This World";
 
   return (
     <div className="stats stats-vertical bg-black/60 lg:stats-horizontal shadow-sm border-red-600 border-2">
@@ -59,7 +59,9 @@ const Stats: React.FC = () => {
       <div className="stat">
         <div className="stat-title text-white flex items-center gap-2">
           <Image src={heartSvg} alt="heart icon" />
-          {title}
+          <div className="text-error text-md bg-black/40 rounded-md px-3 py-1 cursor-default">
+            {title}
+          </div>
         </div>
         <div className="stat-value text-white">{totalWatched}</div>
         <div className="stat-desc text-white">Everything in total</div>

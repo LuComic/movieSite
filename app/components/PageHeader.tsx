@@ -5,15 +5,12 @@ import Image from "next/image";
 import movieSvg from "../pictures/movie_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import showSvg from "../pictures/live_tv_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import topSvg from "../pictures/leaderboard_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
-import addCircle from "../pictures/add_circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import allIcon from "../pictures/apps_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import Link from "next/link";
+import ProfileButton from "./ProfileButton";
+import FriendsButton from "./FriendsButton";
 
-interface PageHeaderProps {
-  openModal: () => void; // Function passed from App to open the modal
-}
-
-const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
+const PageHeader = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const detailsRefs = useRef<Array<HTMLDetailsElement | null>>([]);
@@ -55,11 +52,11 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
   return (
     <div className="navbar relative z-50">
       <div className="navbar-start">
-        <div className="dropdown" ref={dropdownRef}>
+        <div className="dropdown">
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost lg:hidden"
+            className="btn btn-ghost lg:hidden bg-black/0 border-none shadow-none"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             <svg
@@ -77,127 +74,126 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
               />
             </svg>
           </div>
-          {isDropdownOpen && (
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow-sm"
-            >
-              <li>
-                <a className="responsive-body text-white hover:text-red-300 font-medium">
-                  <Image src={topSvg} alt={"leaderboard icon"} />
-                  Your rankings
-                </a>
-                <ul className="p-2">
-                  <li>
-                    <Link
-                      href="../top-3"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      Top 3s
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="../top-all"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      All rankings
-                    </Link>
-                  </li>
-                </ul>
-                <a className="responsive-body text-white hover:text-red-300 font-medium">
-                  <Image src={movieSvg} alt={"movie icon"} />
-                  Movies
-                </a>
-                <ul className="p-2">
-                  <li>
-                    <Link
-                      href="../movies-watched"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      Watched
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="../movies-watchlist"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      Watchlist
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="../movies"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      All
-                    </Link>
-                  </li>
-                </ul>
-                <a className="responsive-body text-white hover:text-red-300 font-medium">
-                  <Image src={showSvg} alt={"show icon"} />
-                  Series
-                </a>
-                <ul className="p-2">
-                  <li>
-                    <Link
-                      href="../series-watched"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      Watched
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="../series-watchlist"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      Watchlist
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="../series"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      All
-                    </Link>
-                  </li>
-                </ul>
-                <a className="responsive-body text-white hover:text-red-300 font-medium">
-                  <Image src={allIcon} alt={"all icon"} />
-                  All
-                </a>
-                <ul className="p-2">
-                  <li>
-                    <Link
-                      href="../all-watched"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      Watched
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="../all-watchlist"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      Watchlist
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="../all"
-                      className="responsive-body text-white font-light hover:text-red-300"
-                    >
-                      All
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          )}
+
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow-sm"
+          >
+            <li>
+              <a className="responsive-body text-white hover:text-red-300 font-medium">
+                <Image src={topSvg} alt={"leaderboard icon"} />
+                Your rankings
+              </a>
+              <ul className="p-2">
+                <li>
+                  <Link
+                    href="../top-3"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Top 3s
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../top-all"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    All rankings
+                  </Link>
+                </li>
+              </ul>
+              <a className="responsive-body text-white hover:text-red-300 font-medium">
+                <Image src={movieSvg} alt={"movie icon"} />
+                Movies
+              </a>
+              <ul className="p-2">
+                <li>
+                  <Link
+                    href="../movies-watched"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watched
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../movies-watchlist"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../movies"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    All
+                  </Link>
+                </li>
+              </ul>
+              <a className="responsive-body text-white hover:text-red-300 font-medium">
+                <Image src={showSvg} alt={"show icon"} />
+                Series
+              </a>
+              <ul className="p-2">
+                <li>
+                  <Link
+                    href="../series-watched"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watched
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../series-watchlist"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../series"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    All
+                  </Link>
+                </li>
+              </ul>
+              <a className="responsive-body text-white hover:text-red-300 font-medium">
+                <Image src={allIcon} alt={"all icon"} />
+                All
+              </a>
+              <ul className="p-2">
+                <li>
+                  <Link
+                    href="../all-watched"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watched
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../all-watchlist"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    Watchlist
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../all"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    All
+                  </Link>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
         <Link href="/" className="font-semibold responsive-h3 text-white">
           StreamList
@@ -362,13 +358,9 @@ const PageHeader: React.FC<PageHeaderProps> = ({ openModal }) => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
-        <button
-          onClick={openModal}
-          className="btn responsive-body bg-[#ff0404] hover:bg-red-700 text-white border-none"
-        >
-          <Image src={addCircle} alt={"add icon"} /> New
-        </button>
+      <div className="navbar-end flex gap-5">
+        <FriendsButton />
+        <ProfileButton />
       </div>
     </div>
   );

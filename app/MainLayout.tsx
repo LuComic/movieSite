@@ -8,6 +8,7 @@ import Image from "next/image";
 import { WatchListProvider } from "./components/WatchListInfo"; // ✅ Import the provider
 import WatchModal from "./components/WatchModal";
 import { useState } from "react";
+import NewWatchButton from "./components/NewWatchButton";
 
 export default function MainLayout({
   children,
@@ -22,9 +23,10 @@ export default function MainLayout({
         <div className="absolute top-0 left-0 w-screen h-full">
           <Image src={Sky} alt="Background" fill className="object-cover" />
         </div>
-        <PageHeader openModal={() => setModalOpen(true)} />
-        {isModalOpen && <WatchModal closeModal={() => setModalOpen(false)} />}
+        <PageHeader />
         {children}
+        <NewWatchButton openModal={() => setModalOpen(true)} />
+        {isModalOpen && <WatchModal closeModal={() => setModalOpen(false)} />}
         <Footer />
       </main>
     </WatchListProvider>

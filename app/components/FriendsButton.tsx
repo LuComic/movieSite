@@ -7,7 +7,7 @@ import removeFriendIcon from "../pictures/person_remove_24dp_FFFFFF_FILL0_wght40
 
 const ProfileButton = () => {
   return (
-    <div className="drawer w-auto h-full">
+    <div className="drawer w-auto h-full bg-transparent">
       <input id="my-drawer-friends" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Page content here */}

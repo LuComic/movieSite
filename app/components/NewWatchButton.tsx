@@ -1,18 +1,23 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
-import AddCircle from "../pictures/add_circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
+import addIcon from "../pictures/add_circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 
 interface NewWatchButtonProps {
-  openModal: () => void; // Function passed from App to open the modal
+  openModal: () => void;
 }
 
 const NewWatchButton: React.FC<NewWatchButtonProps> = ({ openModal }) => {
   return (
     <button
       onClick={openModal}
-      className="btn responsive-body bg-black/70 hover:bg-black/80 text-white border-none rounded-full absolute bottom-4 right-4"
+      className="fixed bottom-8 right-8 z-40 bg-black/70 text-white font-semibold px-4 py-2 rounded-full hover:bg-black/80 transition-colors duration-200 shadow-lg cursor-pointer"
     >
-      <Image src={AddCircle} alt={"add icon"} /> New
+      <div className="flex items-center gap-2">
+        <Image src={addIcon} alt="Add icon" />
+        <span>New</span>
+      </div>
     </button>
   );
 };

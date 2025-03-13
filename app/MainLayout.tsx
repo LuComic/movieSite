@@ -19,7 +19,7 @@ export default function MainLayout({
 
   return (
     <WatchListProvider>
-      <main className="bg-[#ff0404] h-auto">
+      <main className="bg-gradient-to-b from-black from-50% to-[#ff0404] to-50% h-auto">
         <div className="absolute top-0 left-0 w-screen h-full">
           <Image src={Sky} alt="Background" fill className="object-cover" />
         </div>

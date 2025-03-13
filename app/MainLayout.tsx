@@ -19,12 +19,12 @@ export default function MainLayout({
 
   return (
     <WatchListProvider>
-      <main className="bg-gradient-to-b from-black from-50% to-[#ff0404] to-50% h-auto">
-        <div className="absolute top-0 left-0 w-screen h-full">
+      <main className="bg-gradient-to-b from-black from-30% to-[#ff0404] to-100% min-h-screen flex flex-col">
+        <div className="fixed top-0 left-0 w-screen h-full z-0">
           <Image src={Sky} alt="Background" fill className="object-cover" />
         </div>
         <PageHeader />
-        {children}
+        <div className="flex-grow relative z-10">{children}</div>
         <NewWatchButton openModal={() => setModalOpen(true)} />
         {isModalOpen && <WatchModal closeModal={() => setModalOpen(false)} />}
         <Footer />

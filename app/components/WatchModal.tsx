@@ -50,8 +50,8 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
 
   const handleSubmit = async () => {
     if (form.name.trim()) {
-      // Fetch movie data
-      const movieData = await fetchMovieData(form.name);
+      // Pass the type (Movie or Series) to fetchMovieData
+      const movieData = await fetchMovieData(form.name, form.type);
 
       if (movieData) {
         const posterUrl = movieData.poster_path

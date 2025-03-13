@@ -33,7 +33,7 @@ const ProfileButton = () => {
                 <Image src={friendsIcon} alt={"friends icon"} />
               </div>
             </div>
-            <p className="responsive-h3 font-medium cursor-default hover:bg-black/0">
+            <p className="responsive-h3 font-medium cursor-default hover:bg-black/0 text-white">
               Friends
             </p>
           </li>
@@ -46,7 +46,7 @@ const ProfileButton = () => {
             </li>
             <li>
               <details className="dropdown">
-                <summary className="responsive-body flex items-center flex-row gap-3 cursor-pointer">
+                <summary className="responsive-body flex items-center flex-row gap-3 cursor-pointer text-white">
                   <div className="avatar hover:bg-black/0">
                     <div className="w-8 rounded-full">
                       <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
@@ -59,13 +59,13 @@ const ProfileButton = () => {
                 </summary>
                 <ul className="menu dropdown-content bg-black border-2 border-red-600 rounded-box z-1 w-52 p-2 shadow-sm">
                   <li>
-                    <a className="hover:text-red-300">
+                    <a className="hover:text-red-300 text-white">
                       <Image src={allIcon} alt={"all icon"} />
                       Their Collection
                     </a>
                   </li>
                   <li>
-                    <a className="hover:text-red-300">
+                    <a className="hover:text-red-300 text-white">
                       <Image
                         src={removeFriendIcon}
                         alt={"remove friend icon"}
@@ -78,7 +78,7 @@ const ProfileButton = () => {
             </li>
             <li>
               <details className="dropdown">
-                <summary className="responsive-body flex items-center flex-row gap-3 cursor-pointer">
+                <summary className="responsive-body flex items-center flex-row gap-3 cursor-pointer text-white">
                   <div className="avatar hover:bg-black/0">
                     <div className="w-8 rounded-full">
                       <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
@@ -91,13 +91,13 @@ const ProfileButton = () => {
                 </summary>
                 <ul className="menu dropdown-content bg-black border-2 border-red-600 rounded-box z-1 w-52 p-2 shadow-sm">
                   <li>
-                    <a className="hover:text-red-300">
+                    <a className="hover:text-red-300 text-white">
                       <Image src={allIcon} alt={"all icon"} />
                       Their Collection
                     </a>
                   </li>
                   <li>
-                    <a className="hover:text-red-300">
+                    <a className="hover:text-red-300 text-white">
                       <Image
                         src={removeFriendIcon}
                         alt={"remove friend icon"}

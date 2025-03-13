@@ -34,7 +34,7 @@ const ProfileButton = () => {
               </div>
             </div>
             <div className="flex flex-col gap-2 hover:bg-black/0">
-              <p className="responsive-h3 font-medium cursor-default">
+              <p className="responsive-h3 font-medium cursor-default text-white">
                 John Doe
               </p>
               <div className="badge badge-soft px-3 badge-error cursor-default">
@@ -44,25 +44,25 @@ const ProfileButton = () => {
           </li>
           <div className="mt-5 flex flex-col gap-2">
             <li>
-              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3">
+              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3 text-white">
                 <Image src={infoIcon} alt="info icon" />
                 Profile details
               </a>
             </li>
             <li>
-              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3">
+              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3 text-white">
                 <Image src={termsIcon} alt="terms icon" />
                 Terms and Conditions
               </a>
             </li>
             <li>
-              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3">
+              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3 text-white">
                 <Image src={privacyIcon} alt="privacy icon" />
                 Privacy Policy
               </a>
             </li>
             <li>
-              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3">
+              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3 text-white">
                 <Image src={signoutIcon} alt="signout icon" />
                 Sign out
               </a>

@@ -7,7 +7,7 @@ import signoutIcon from "../pictures/logout_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz
 
 const ProfileButton = () => {
   return (
-    <div className="drawer w-auto">
+    <div className="drawer w-auto h-full">
       <input id="my-drawer-profile" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Page content here */}

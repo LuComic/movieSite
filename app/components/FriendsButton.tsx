@@ -39,7 +39,7 @@ const ProfileButton = () => {
           </li>
           <div className="mt-2 flex flex-col gap-2">
             <li>
-              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3 mb-2">
+              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3 mb-2 text-white">
                 <Image src={addIcon} alt={"add icon"} />
                 Add Friend
               </a>

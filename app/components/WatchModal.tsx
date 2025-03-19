@@ -93,11 +93,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
 
   return (
     <div className="fixed inset-0 bg-black/90 z-50">
-      <div
-        className={`modal border-2 border-red-600 rounded-xl bg-black/60 max-w-md modal-open mx-auto ${
-          form.status === "Watchlist" ? "max-h-[60vh]" : "max-h-[90vh]"
-        } xl:p-4 lg:p-4 p-2 my-auto flex flex-col justify-center gap-4`}
-      >
+      <div className="modal border-2 border-red-600 rounded-xl bg-black/60 max-w-md modal-open mx-auto h-max xl:p-4 lg:p-4 p-2 my-auto flex flex-col justify-center gap-4 xl:py-6 lg:py-6 py-4">
         <h3 className="responsive-h3 text-white font-bold pb-2">
           Something new?
         </h3>
@@ -110,8 +106,12 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           value={form.type}
           onChange={handleChange}
         >
-          <option value="Movie">Movie</option>
-          <option value="Series">Series</option>
+          <option value="Movie" className="text-white">
+            Movie
+          </option>
+          <option value="Series" className="text-white">
+            Series
+          </option>
         </select>
         <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
           What&apos;s the name?

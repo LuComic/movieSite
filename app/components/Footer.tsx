@@ -61,13 +61,13 @@ const Footer = () => {
           </a>
         </div>
       </nav>
-      <nav className="max-w-[30vw] ml-auto">
+      <nav className="max-w-[30vw] lg:ml-auto xl:ml-auto mt-2 lg:mt-0 xl:mt-0">
         <Image
           src={movieDatabaseLogo}
           alt="tmdb logo"
-          className="ml-auto w-16"
+          className="lg:ml-auto xl:ml-auto w-16"
         />
-        <h6 className="text-white font-xs text-right">
+        <h6 className="text-white font-xs lg:text-right xl:text-right">
           This website uses TMDB and the TMDB APIs but is not endorsed,
           certified, or otherwise approved by TMDB.
         </h6>

@@ -12,7 +12,7 @@ export default function ConditionalLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const noLayoutRoutes = ["/login-page"]; // Add the route(s) where you don't want to apply MainLayout
+  const noLayoutRoutes = ["/"]; // Add the route(s) where you don't want to apply MainLayout
 
   const isNoLayoutRoute = noLayoutRoutes.includes(pathname);
 

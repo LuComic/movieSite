@@ -62,7 +62,7 @@ const ProfileButton = () => {
               </a>
             </li>
             <li>
-              <a className="responsive-body hover:text-red-300 flex items-center flex-row gap-3 text-white">
+              <a href="/api/auth/signout" className="responsive-body hover:text-red-300 flex items-center flex-row gap-3 text-white">
                 <Image src={signoutIcon} alt="signout icon" />
                 Sign out
               </a>

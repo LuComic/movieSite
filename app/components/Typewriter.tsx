@@ -19,7 +19,7 @@ const Typewriter = ({ text }: { text: string }) => {
   }, [text]);
 
   return (
-    <h1 className="responsive-h3 font-bold mb-4 text-white text-center xl:text-left lg:text-left md:text-left">
+    <h1 className="responsive-h3 font-bold mb-4 text-white text-center h-6">
       {displayedText}
     </h1>
   );

@@ -1,45 +1,19 @@
-// Home.tsx
-"use client";
+import Typewriter from "./components/Typewriter";
 
-import MainContent from "./components/MainContent";
-import { useState } from "react";
-import InfoModal from "./components/InfoModal";
-import { WatchItem } from "./components/Types"; // Import the WatchItem type
-import AddToWatchedModal from "./components/AddToWatched";
-
-export default function Home() {
-  const [isInfoModalOpen, setInfoModalOpen] = useState(false);
-  const [isAddToWatchedModalOpen, setAddToWatchedModalOpen] = useState(false);
-  const [selectedMovie, setSelectedMovie] = useState<WatchItem | null>(null);
-
-  const openInfoModal = (movie: WatchItem) => {
-    setSelectedMovie(movie); // Set the selected movie
-    setInfoModalOpen(true); // Open the modal
-  };
-
-  const openAddToWatchedModal = (movie: WatchItem) => {
-    setSelectedMovie(movie);
-    setAddToWatchedModalOpen(true);
-  };
-
+const Login = () => {
   return (
-    <>
-      <MainContent
-        openInfoModal={openInfoModal}
-        openAddToWatchedModal={openAddToWatchedModal}
-      />
-      {isAddToWatchedModalOpen && selectedMovie && (
-        <AddToWatchedModal
-          closeAddToWatchedModal={() => setAddToWatchedModalOpen(false)}
-          movie={selectedMovie}
-        />
-      )}
-      {isInfoModalOpen && selectedMovie && (
-        <InfoModal
-          closeInfoModal={() => setInfoModalOpen(false)}
-          movie={selectedMovie}
-        />
-      )}
-    </>
+    <div className="relative z-10 p-4 w-full min-w-screen">
+      <h1 className="responsive-h2 text-white font-semibold text-center w-full">
+        StreamList
+      </h1>
+      <div className="flex flex-col items-center justify-center w-full h-full min-h-screen pb-10">
+        <div className="bg-black/60 border-2 border-red-600 rounded-xl p-4">
+          <Typewriter text="Maake movies and shows even more memorable with StreamList!" />
+        </div>
+        <a className="responsive-h3 font-bold mb-4 text-white text-center mt-11 underline decoration-3 decoration-red-500 underline-offset-4 cursor-pointer" href="/api/auth/signin">Get started now!</a>
+      </div>
+    </div>
   );
-}
+};
+
+export default Login;

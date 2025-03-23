@@ -45,21 +45,21 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
           </h3>
           <p className="text-white grow-0">{description}</p>
           <div className="my-auto">
-            <div>
+            <div className="mb-3">
               <p className="text-white font-semibold responsive-body">
                 Release:
               </p>
-              <p className="text-white text-left my-2">{movie.releaseDate}</p>
+              <p className="text-white text-left mb-2 mt-1">{movie.releaseDate}</p>
             </div>
-            <div>
+            <div className="mb-3">
               <p className="text-white font-semibold responsive-body">
                 Genres:
               </p>
-              <p className="text-white text-left my-2">{movie.genres}</p>
+              <p className="text-white text-left mb-2 mt-1">{movie.genres}</p>
             </div>
-            <div>
+            <div className="mb-3">
               <p className="text-white font-semibold responsive-body">Cast:</p>
-              <p className="text-white text-left my-2">{movie.movieCast}</p>
+              <p className="text-white text-left mb-2 mt-1">{movie.movieCast}</p>
             </div>
           </div>
           <div className="card-actions justify-end items-center">
@@ -68,11 +68,11 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
                 ?/5
               </div>
             ) : (
-              <div className="badge badge-outline responsive-body font-semibold">
+              <div className="badge badge-outline responsive-body font-semibold text-white">
                 {movie.rating}/10
               </div>
             )}
-            <div className="badge badge-outline responsive-body font-semibold">
+            <div className="badge badge-outline responsive-body font-semibold text-white">
               {movie.type}
             </div>
           </div>

@@ -40,7 +40,7 @@ const MoviePageWatched: React.FC<moviePageWatchedProps> = ({
         <p className="text-white text-md hover:text-red-300">Back</p>
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">
-        Movies you've watched
+        Movies you&apos;ve watched
       </h3>
       <div className="h-auto grid lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 items-start justify-center">
         {movies.length > 0 ? (

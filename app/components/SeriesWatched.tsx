@@ -38,7 +38,7 @@ const SeriesWatched: React.FC<seriesWatchedProps> = ({ openInfoModal }) => {
         <p className="text-white text-md hover:text-red-300">Back</p>
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">
-        Series you've watched
+        Series you&apos;ve watched
       </h3>
       <div className="h-auto grid lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 items-start justify-center">
         {series.length > 0 ? (

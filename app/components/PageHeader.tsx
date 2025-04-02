@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import movieSvg from "../pictures/movie_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import showSvg from "../pictures/live_tv_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
-import topSvg from "../pictures/leaderboard_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import allIcon from "../pictures/apps_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import Link from "next/link";
 import ProfileButton from "./ProfileButton";

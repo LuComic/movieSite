@@ -11,11 +11,7 @@ import {
 
 import {
   Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+  CardContent
 } from "@/components/ui/card"
 
 const chartData = [
@@ -56,8 +52,6 @@ const GenreChart = () => {
   const context = useContext(WatchListInfo);
   if (!context)
     throw new Error("Files must be used within a WatchListProvider");
-
-  const { watchList } = context;
 
   const totalVisitors = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.visitors, 0)

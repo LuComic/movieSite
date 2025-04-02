@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { WatchListInfo } from "./WatchListInfo";
 import { WatchItem } from "./Types";
 import { fetchMovieData } from "./tmdb"; // Import the fetch function

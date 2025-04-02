@@ -23,7 +23,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
     rating: 0,
   });
 
- const handleChange = (
+  const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >

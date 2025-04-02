@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import StatsPageMovies from "./StatsPageMovies";
 import FavouriteActors from "./FavouriteActors";
-import GenreChart from "./GenreChart";
 
 const TopAllComponent = () => {
   const router = useRouter();
@@ -26,7 +25,6 @@ const TopAllComponent = () => {
       <div className="h-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 items-start gap-4 justify-start">
         <StatsPageMovies />
         <FavouriteActors />
-        <GenreChart />
       </div>
     </div>
   );

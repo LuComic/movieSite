@@ -25,7 +25,7 @@ const SeriesPageSeries: React.FC<seriesPageProps> = ({ openInfoModal }) => {
   };
 
   return (
-    <div className="relative z-30 xl:px-60 lg:px-60 md:px-32 sm:px-10 px-10 py-10">
+    <div className="relative z-30 xl:px-52 lg:px-40 md:px-28 sm:px-10 px-10 py-10">
       <div
         className="flex gap-1 items-center justify-start pb-4 cursor-pointer w-max"
         onClick={handleBack}

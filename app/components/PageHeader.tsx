@@ -9,6 +9,7 @@ import allIcon from "../pictures/apps_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg
 import Link from "next/link";
 import ProfileButton from "./ProfileButton";
 import FriendsButton from "./FriendsButton";
+import heartIcon from "../pictures/favorite_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 
 const PageHeader = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -81,8 +82,8 @@ const PageHeader = () => {
           >
             <li>
               <a className="responsive-body text-white hover:text-red-300 font-medium">
-                <Image src={topSvg} alt={"leaderboard icon"} />
-                Your rankings
+                <Image src={heartIcon} alt={"heart icon"} />
+                For you 
               </a>
               <ul className="p-2">
                 <li>
@@ -98,7 +99,15 @@ const PageHeader = () => {
                     href="../top-all"
                     className="responsive-body text-white font-light hover:text-red-300"
                   >
-                    All rankings
+                    Stats
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../top-all"
+                    className="responsive-body text-white font-light hover:text-red-300"
+                  >
+                    News 
                   </Link>
                 </li>
               </ul>
@@ -208,8 +217,8 @@ const PageHeader = () => {
               }}
             >
               <summary className="responsive-body font-medium text-white hover:text-red-300">
-                <Image src={topSvg} alt={"leaderboard icon"} />
-                Your rankings
+                <Image src={heartIcon} alt={"heart icon"} />
+                For you 
               </summary>
               <ul className="p-2 bg-black">
                 <li>
@@ -227,7 +236,16 @@ const PageHeader = () => {
                     className="responsive-body font-light text-white hover:text-red-300"
                     onClick={handleLinkClick}
                   >
-                    All rankings
+                    Stats
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="../top-all"
+                    className="responsive-body font-light text-white hover:text-red-300"
+                    onClick={handleLinkClick}
+                  >
+                    News
                   </Link>
                 </li>
               </ul>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { WatchListInfo } from "./WatchListInfo";
 import { WatchItem } from "./Types";
 import { fetchMovieData } from "./tmdb"; // Import the fetch function
@@ -23,7 +23,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
     rating: 0,
   });
 
-  const handleChange = (
+ const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >

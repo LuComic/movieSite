@@ -25,7 +25,7 @@ const FavouriteActors = () => {
     .slice(0, 9); // Take the first 5 elements
 
   return (
-    <div className='flex flex-col h-full'>
+    <div className='flex flex-col h-full w-full'>
       <h3 className='responsive-h3 text-white font-semibold'>Your favourite actors</h3>
       <div className="h-auto rounded-box bg-black/60 border-2 border-red-600 my-4">
         <table className="table">

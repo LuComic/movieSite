@@ -41,11 +41,6 @@ const Files: React.FC<FilesProps> = ({
         !(item.name === itemToDelete.name && item.type === itemToDelete.type)
     );
 
-    // Log for debugging
-    console.log("Before delete - watchList:", watchList);
-    console.log("Item to delete:", itemToDelete);
-    console.log("After delete - updatedList:", updatedList);
-
     // Update both state and localStorage synchronously
     setWatchList([...updatedList]); // Create new array reference
     localStorage.setItem("watchList", JSON.stringify(updatedList));

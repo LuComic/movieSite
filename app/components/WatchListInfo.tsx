@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useState, useEffect, ReactNode } from "react";
-import { WatchItem } from "./Types";
+import { WatchItem } from "@/lib/types";
 
 interface WatchListContextType {
   watchList: WatchItem[];

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { WatchListInfo } from "./WatchListInfo";
-import { WatchItem } from "./Types";
-import { fetchMovieData } from "./tmdb"; // Import the fetch function
-import { v4 as uuidv4 } from "uuid";
+import { WatchItem } from "@/lib/types";
+import { fetchMovieData } from "@/lib/api";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 interface ModalProps {
   closeModal: () => void;
@@ -14,7 +15,9 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
   const context = useContext(WatchListInfo);
   if (!context)
     throw new Error("WatchInputModal must be used within a WatchListProvider");
+
   const { addItem } = context;
+  const { watchList } = context;
 
   const [form, setForm] = useState<Omit<WatchItem, "id">>({
     type: "Movie",
@@ -22,6 +25,14 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
     name: "",
     rating: 0,
   });
+
+  const [error, setError] = useState<string | null>(null); // Error message
+  // Clear error state on component mount and unmount
+  useEffect(() => {
+    return () => {
+      setError(null);
+    };
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -33,6 +44,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
       ...prev,
       [name]: name === "rating" ? Number(value) : value, // Handle rating as a number
     }));
+    setError(null);
   };
 
   const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +61,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
   };
 
   const handleSubmit = async () => {
-    if (form.name.trim()) {
+    if (form.name.trim() && !watchList.some(item => item.name.toLocaleLowerCase() === form.name.trim().toLocaleLowerCase())) {
       // Pass the type (Movie or Series) to fetchMovieData
       const movieData = await fetchMovieData(form.name, form.type);
 
@@ -59,21 +71,32 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           : undefined;
 
         const releaseDate = movieData.release_date || "Unknown"; // Release date
+
+        console.log("movieData:", movieData);
+        console.log("movieData.genres:", movieData.genres);
+        if (movieData.genres && Array.isArray(movieData.genres)) {
+          movieData.genres.forEach((genre, index) => {
+            console.log("Genre " + index + ":", genre);
+          });
+        }
+
         const genres = movieData.genres
-          ? movieData.genres
+          ? Array.isArray(movieData.genres)
+            ? movieData.genres
               .map((genre: { name: string }) => genre.name)
               .join(", ")
+            : "Unknown"
           : "Unknown"; // Extract genre names
 
         // Fetch cast information (if available)
         const castList = movieData.credits?.cast
           ? movieData.credits.cast
-              .slice(0, 5) // Get top 5 cast members
-              .map((actor: { name: string }) => actor.name)
-              .join(", ")
+            .slice(0, 5) // Get top 5 cast members
+            .map((actor: { name: string }) => actor.name)
+            .join(", ")
           : "Cast unavailable";
 
-        const id = uuidv4();
+        const id = movieData.id;
 
         // Add the new details to the watch item
         const newItem: WatchItem = {
@@ -87,8 +110,12 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
 
         addItem(newItem);
         closeModal();
+        setError(null);
       }
-    }
+    } else {
+      const errorMessage = `Either the ${form.type} is already added, rating is 0 or name is invalid`;
+      setError(errorMessage);
+      toast.error(errorMessage);    }
   };
 
   return (
@@ -179,6 +206,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           </button>
         </div>
       </div>
+      <Toaster richColors />
     </div>
   );
 };

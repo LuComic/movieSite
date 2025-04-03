@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import StatsPageMovies from "./StatsPageMovies";
 import FavouriteActors from "./FavouriteActors";
+import GenreDiv from "./GenreDiv";
 
 const TopAllComponent = () => {
   const router = useRouter();
@@ -22,9 +23,10 @@ const TopAllComponent = () => {
         <p className="text-white text-md hover:text-red-300">Back</p>
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">Stats</h3>
-      <div className="h-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 items-start gap-4 justify-start">
+      <div className="h-full flex flex-col lg:grid xl:grid lg:grid-cols-3 xl:grid-cols-3 items-start gap-4 justify-start">
         <StatsPageMovies />
         <FavouriteActors />
+        <GenreDiv />
       </div>
     </div>
   );

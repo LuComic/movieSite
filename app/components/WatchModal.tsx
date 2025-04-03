@@ -26,7 +26,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
     rating: 0,
   });
 
-  const [error, setError] = useState<string | null>(null); // Error message
+  const [, setError] = useState<string | null>(null); // Error message
   // Clear error state on component mount and unmount
   useEffect(() => {
     return () => {

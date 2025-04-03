@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 const API_KEY = "be510a38a2a3e31f1a0cef3e845479ac";
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -51,7 +51,13 @@ export async function GET(req: NextRequest) {
       recommendations: recommendationsResponse.results,
       similar: similarResponse.results,
     }, { status: 200 });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError;
+      return NextResponse.json({ error: axiosError.message }, { status: 500 });
+    } else if (error instanceof Error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    } else {
+      return NextResponse.json({ error: 'An unknown error occurred' }, { status: 500 });
   }
-}
+}}

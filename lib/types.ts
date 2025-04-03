@@ -11,8 +11,6 @@ export interface MovieData {
   credits?: {
       cast: { name: string }[];
   };
-  recommendations?: MovieData[];
-  similar?: MovieData[];
 }
 
 export interface WatchItem {
@@ -26,6 +24,4 @@ export interface WatchItem {
   releaseDate?: string;
   genres?: string;
   movieCast?: string;
-  recommendations?: MovieData[];
-  similar?: MovieData[];
 }

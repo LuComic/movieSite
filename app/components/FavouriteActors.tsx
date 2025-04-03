@@ -22,11 +22,11 @@ const FavouriteActors = () => {
 
   const topActors = Object.entries(popularActors)
     .sort((a, b) => b[1] - a[1]) // Sort by occurrence (descending)
-    .slice(0, 9); // Take the first 5 elements
+    .slice(0, 10); // Take the first 5 elements
 
   return (
     <div className='flex flex-col h-full w-full'>
-      <h3 className='responsive-h3 text-white font-semibold'>Your favourite actors</h3>
+      <h3 className='responsive-h3 text-white font-semibold'>Your 10 favourite actors</h3>
       <div className="h-auto rounded-box bg-black/60 border-2 border-red-600 my-4">
         <table className="table">
           {/* head */}

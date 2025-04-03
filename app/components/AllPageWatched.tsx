@@ -5,7 +5,7 @@ import { WatchListInfo } from "./WatchListInfo";
 import backSvg from "../pictures/arrow_back_ios_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { WatchItem } from "./Types";
+import { WatchItem } from "@/lib/types";
 
 interface allWatchedPageProps {
   openInfoModal: (movie: WatchItem) => void; // Update to accept a movie parameter

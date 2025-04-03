@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import FilesAndMovies from "./FilesAndMovies";
 import { WatchListInfo } from "./WatchListInfo"; // Import context
-import { WatchItem } from "./Types";
+import { WatchItem } from "@/lib/types";
 
 interface MainContentProps {
   openInfoModal: (movie: WatchItem) => void; // Update to accept a movie parameter

@@ -1,6 +1,6 @@
 "use client";
 
-import { WatchItem } from "./Types";
+import { WatchItem } from "@/lib/types";
 import closeSvg from "../pictures/cancel_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import Image from "next/image";
 

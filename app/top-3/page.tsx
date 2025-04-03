@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import InfoModal from "../components/InfoModal";
-import { WatchItem } from "../components/Types";
+import { WatchItem } from "@/lib/types";
 import Top3Component from "../components/Top3";
 
 const Top3 = () => {

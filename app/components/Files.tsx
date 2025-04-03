@@ -5,7 +5,7 @@ import movieSvg from "../pictures/movie_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.s
 import showSvg from "../pictures/live_tv_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import { WatchListInfo } from "./WatchListInfo";
 import deleteSvg from "../pictures/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
-import { WatchItem } from "./Types"; // Import the WatchItem type
+import { WatchItem } from "@/lib/types";
 import eyeOpen from "../pictures/visibility_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import eyeClosed from "../pictures/visibility_off_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 

@@ -4,7 +4,7 @@
 import MainContent from "./components/MainContent";
 import { useState } from "react";
 import InfoModal from "./components/InfoModal";
-import { WatchItem } from "./components/Types"; // Import the WatchItem type
+import { WatchItem } from "@/lib/types";
 import AddToWatchedModal from "./components/AddToWatched";
 
 export default function Home() {

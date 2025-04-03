@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import MoviePageMovies from "../components/MoviePageMovies";
 import InfoModal from "../components/InfoModal";
-import { WatchItem } from "../components/Types";
+import { WatchItem } from "@/lib/types";
 
 const MoviePage = () => {
   const [isInfoModalOpen, setInfoModalOpen] = useState(false);

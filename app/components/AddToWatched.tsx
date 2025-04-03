@@ -2,7 +2,7 @@
 
 import { useState, useContext } from "react";
 import { WatchListInfo } from "./WatchListInfo";
-import { WatchItem } from "./Types";
+import { WatchItem } from "@/lib/types";
 
 interface AddToWatchedProps {
   closeAddToWatchedModal: () => void;

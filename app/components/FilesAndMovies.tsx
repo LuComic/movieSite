@@ -3,7 +3,7 @@ import React from "react";
 import Files from "./Files";
 import Stats from "./Stats";
 import RecentWatches from "./RecentWatches";
-import { WatchItem } from "./Types";
+import { WatchItem } from "@/lib/types";
 
 interface FilesAndMoviesProps {
   openInfoModal: (movie: WatchItem) => void; // Pass the prop type

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import InfoModal from "../components/InfoModal";
-import { WatchItem } from "../components/Types";
+import { WatchItem } from "@/lib/types";
 import AllPageAll from "../components/AllPageAll";
 
 const AllPage = () => {

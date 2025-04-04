@@ -7,6 +7,7 @@ import StatsPageMovies from "./StatsPageMovies";
 import FavouriteActors from "./FavouriteActors";
 import GenreDiv from "./GenreDiv";
 import { WatchItem } from "@/lib/types";
+import SimilarRecommendations from "./SimilarRecommendations";
 
 interface moviePageProps {
   openInfoModal: (movie: WatchItem) => void; // Update to accept a movie parameter
@@ -32,6 +33,7 @@ const TopAllComponent: React.FC<moviePageProps> = ({ openInfoModal }) => {
         <StatsPageMovies openInfoModal={openInfoModal} />
         <FavouriteActors />
         <GenreDiv />
+        <SimilarRecommendations />
       </div>
     </div>
   );

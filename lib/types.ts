@@ -8,6 +8,7 @@ export interface MovieData {
   release_date?: string;
   first_air_date?: string;
   genres?: { id: number; name: string }[] | null | undefined;
+  genre_ids?: number[];
   credits?: {
       cast: { name: string }[];
   };

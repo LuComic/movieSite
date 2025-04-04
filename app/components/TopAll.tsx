@@ -6,8 +6,13 @@ import { useRouter } from "next/navigation";
 import StatsPageMovies from "./StatsPageMovies";
 import FavouriteActors from "./FavouriteActors";
 import GenreDiv from "./GenreDiv";
+import { WatchItem } from "@/lib/types";
 
-const TopAllComponent = () => {
+interface moviePageProps {
+  openInfoModal: (movie: WatchItem) => void; // Update to accept a movie parameter
+}
+
+const TopAllComponent: React.FC<moviePageProps> = ({ openInfoModal }) => {
   const router = useRouter();
   const handleBack = () => {
     router.back();
@@ -24,7 +29,7 @@ const TopAllComponent = () => {
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">Stats</h3>
       <div className="h-full flex flex-col lg:grid xl:grid lg:grid-cols-3 xl:grid-cols-3 items-start gap-4 justify-start">
-        <StatsPageMovies />
+        <StatsPageMovies openInfoModal={openInfoModal} />
         <FavouriteActors />
         <GenreDiv />
       </div>

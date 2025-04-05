@@ -95,3 +95,34 @@ export const fetchSimilarMovies = async (id: number, type: 'Movie' | 'Series' = 
     return null;
   }
 }
+
+export const weeklyNews = async (): Promise<MovieData[] | null> => {
+  const endpoint = 'week';
+
+  try {
+    const newsResponse = await axios.get(`${BASE_URL}/trending/all/${endpoint}`, {
+      params: {
+        api_key: API_KEY,
+        page: 1,
+      },
+    });
+
+    if (
+      !newsResponse.data ||
+      !newsResponse.data.results ||
+      newsResponse.data.results.length === 0
+    ) {
+      console.warn('Unable to fetch similar movies or no similar movies found');
+      return null;
+    }
+
+    const result = newsResponse.data;
+    const news = result.results as MovieData[];
+
+    return news.slice(0, 5);
+
+  } catch (error) {
+    console.error("Problem fetching news", error);
+    return null;
+  }
+}

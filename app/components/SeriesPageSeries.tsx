@@ -57,13 +57,13 @@ const SeriesPageSeries: React.FC<seriesPageProps> = ({ openInfoModal }) => {
               <div className="card-body bg-gradient-to-t from-red-950 from-20% to-black p-4">
                 <h2 className="card-title text-white">{show.name}</h2>
                 <p className="text-white">{show.description}</p>
-                <div className="card-actions justify-end">
+                <div className="card-actions flex justify-end items-end">
                   {show.rating === 0 ? (
-                    <p className="btn btn-primary bg-black/0 border-none text-white shadow-none">
+                    <p className="btn max-w-max btn-primary w-auto bg-black/0 border-none text-white shadow-none p-2">
                       ?/10
                     </p>
                   ) : (
-                    <p className="btn btn-primary bg-black/0 border-none text-white shadow-none">
+                    <p className="btn max-w-max btn-primary w-auto bg-black/0 border-none text-white shadow-none p-2">
                       {show.rating}/10
                     </p>
                   )}

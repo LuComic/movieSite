@@ -103,7 +103,7 @@ const PageHeader = () => {
                 </li>
                 <li>
                   <Link
-                    href="../top-all"
+                    href="../news"
                     className="responsive-body text-white font-light hover:text-red-300"
                   >
                     News 
@@ -240,7 +240,7 @@ const PageHeader = () => {
                 </li>
                 <li>
                   <Link
-                    href="../top-all"
+                    href="../news"
                     className="responsive-body font-light text-white hover:text-red-300"
                     onClick={handleLinkClick}
                   >

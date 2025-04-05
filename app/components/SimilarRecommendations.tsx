@@ -96,7 +96,7 @@ const SimilarRecommendations = () => {
                   alt={movie.title}
                 />
                 <div className='bg-black/50 rounded-xl flex flex-col justify-end w-full h-full absolute top-0 left-0 p-4 opacity-0 hover:opacity-100 duration-250'>
-                  <p className='responsive-h3 text-white font-bold'>{movie.name}</p>
+                  <p className='responsive-h3 text-white font-bold'>{movie.title}</p>
                   <p className='responsive-body text-white'>{getGenreNames(movie.genre_ids)}</p>
                 </div>
               </div>

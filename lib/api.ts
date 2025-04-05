@@ -119,7 +119,7 @@ export const weeklyNews = async (): Promise<MovieData[] | null> => {
     const result = newsResponse.data;
     const news = result.results as MovieData[];
 
-    return news.slice(0, 5);
+    return news.slice(0, 6);
 
   } catch (error) {
     console.error("Problem fetching news", error);

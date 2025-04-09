@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios, { AxiosError } from 'axios';
 
-const API_KEY = "be510a38a2a3e31f1a0cef3e845479ac";
+const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 const fetchDataFromTMDB = async (url: string) => {

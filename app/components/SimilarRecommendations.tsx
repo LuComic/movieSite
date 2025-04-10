@@ -55,7 +55,7 @@ const SimilarRecommendations = () => {
         setSimilarMovies(data);
       });
     } else {
-      setSimilarMovies(null); // Clear similar movies if no movie is selected
+      setSimilarMovies(null);
     }
   }
 

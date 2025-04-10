@@ -1,6 +1,4 @@
 # The directory Mix will write compiled artifacts to.
-/_build/
-!_build/prod/rel/moviesiteback
 
 # If you run "mix test --cover", coverage assets end up here.
 /cover/

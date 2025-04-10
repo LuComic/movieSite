@@ -126,3 +126,32 @@ export const weeklyNews = async (): Promise<MovieData[] | null> => {
     return null;
   }
 }
+
+export const fetchPopularMovies = async (type: 'Movie' | 'Series' = 'Movie'):Promise<MovieData[] | null> => {
+  const endpoint = type.toLowerCase() === "movie" ? "movie" : "tv"
+  try {
+    const popularResponse = await axios.get(`${BASE_URL}/${endpoint}/popular`, {
+      params: {
+        api_key: API_KEY,
+        page: 1,
+      },
+    })
+    if (
+      !popularResponse.data ||
+      !popularResponse.data.results ||
+      popularResponse.data.results.length === 0
+    ) {
+      console.warn('Unable to fetch popular movies or series');
+      return null;
+    }
+
+    const result = popularResponse.data;
+    const popularMovies = result.results as MovieData[];
+
+    return popularMovies.slice(0, 10);
+
+  } catch (error) {
+    console.error("Error fetching popular movies:", error);
+    return null;
+  }
+}

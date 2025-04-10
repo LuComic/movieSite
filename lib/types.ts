@@ -25,4 +25,5 @@ export interface WatchItem {
   releaseDate?: string;
   genres?: string;
   movieCast?: string;
+  avg_rating?: number;
 }

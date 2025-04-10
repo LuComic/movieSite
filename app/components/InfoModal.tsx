@@ -61,6 +61,10 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
               <p className="text-white font-semibold responsive-body">Cast:</p>
               <p className="text-white text-left mb-2 mt-1">{movie.movieCast}</p>
             </div>
+            <div className="mb-3">
+              <p className="text-white font-semibold responsive-body">Average user rating:</p>
+              <p className="text-white text-left mb-2 mt-1">{movie.avg_rating}</p>
+            </div>
           </div>
           <div className="card-actions justify-end items-center">
             {movie.rating === 0 ? (

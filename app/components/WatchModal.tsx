@@ -72,13 +72,14 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
 
         const releaseDate = movieData.release_date || "Unknown"; // Release date
 
-        console.log("movieData:", movieData);
-        console.log("movieData.genres:", movieData.genres);
+
         if (movieData.genres && Array.isArray(movieData.genres)) {
           movieData.genres.forEach((genre, index) => {
             console.log("Genre " + index + ":", genre);
           });
         }
+
+        const avg_rating = movieData.vote_average;
 
         const genres = movieData.genres
           ? Array.isArray(movieData.genres)
@@ -105,6 +106,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           posterUrl,
           releaseDate,
           genres,
+          avg_rating,
           movieCast: castList,
         };
 

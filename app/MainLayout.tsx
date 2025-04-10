@@ -24,7 +24,7 @@ export default function MainLayout({
           <Image src={Sky} alt="Background" fill className="object-cover" />
         </div>
         <PageHeader />
-        <div className="flex-grow relative z-10">{children}</div>
+        <div className="flex-grow">{children}</div>
         <NewWatchButton openModal={() => setModalOpen(true)} />
         {isModalOpen && <WatchModal closeModal={() => setModalOpen(false)} />}
         <Footer />

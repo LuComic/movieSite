@@ -3,7 +3,7 @@ module.exports = {
       {
         name: 'movieSite-test',
         script: 'node_modules/next/dist/bin/next', // Direct path to the Next.js binary
-        args: 'start',
+        args: 'start -p 4545',
         cwd: '/data02/virt133817/movieSite',
         instances: 2,
         exec_mode: 'cluster',

@@ -89,13 +89,9 @@ const MovieDataModal: React.FC<ModalProps> = ({ closeMovieDataModal, movie }) =>
           <div className="my-auto">
             <div className="mb-3">
               <p className="text-white font-semibold responsive-body">
-                First aired:
+                Release:
               </p>
-              {movie.first_air_date ? (
-                <p className="text-white text-left mb-2 mt-1">{movie.first_air_date}</p>
-              ) : (
-                <p className="text-white text-left mb-2 mt-1">-</p>
-              )}
+                <p className="text-white text-left mb-2 mt-1">{movie.release_date}</p>
             </div>
             <div className="mb-3">
               <p className="text-white font-semibold responsive-body">

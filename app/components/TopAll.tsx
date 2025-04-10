@@ -8,12 +8,14 @@ import FavouriteActors from "./FavouriteActors";
 import GenreDiv from "./GenreDiv";
 import { WatchItem } from "@/lib/types";
 import SimilarRecommendations from "./SimilarRecommendations";
+import { MovieData } from "@/lib/types";
 
 interface moviePageProps {
   openInfoModal: (movie: WatchItem) => void; // Update to accept a movie parameter
+  openMovieDataModal: (movie: MovieData) => void;
 }
 
-const TopAllComponent: React.FC<moviePageProps> = ({ openInfoModal }) => {
+const TopAllComponent: React.FC<moviePageProps> = ({ openInfoModal, openMovieDataModal }) => {
   const router = useRouter();
   const handleBack = () => {
     router.back();
@@ -33,7 +35,7 @@ const TopAllComponent: React.FC<moviePageProps> = ({ openInfoModal }) => {
         <StatsPageMovies openInfoModal={openInfoModal} />
         <FavouriteActors />
         <GenreDiv />
-        <SimilarRecommendations />
+        <SimilarRecommendations openMovieDataModal={openMovieDataModal} />
       </div>
     </div>
   );

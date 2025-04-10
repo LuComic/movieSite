@@ -5,6 +5,10 @@ import { fetchSimilarMovies } from '@/lib/api';
 import { WatchListInfo } from './WatchListInfo';
 import { MovieData } from '@/lib/types';
 
+interface SimilarRecommendationsProps {
+  openMovieDataModal: (movie: MovieData) => void;
+}
+
 // This is a basic mapping, you might want to fetch this from an API or have a more comprehensive list
 const genreMap: Record<number, string> = {
   28: 'Action',
@@ -38,7 +42,7 @@ const getGenreNames = (genreIds: number[] | undefined): string => {
     .join(', ');
 };
 
-const SimilarRecommendations = () => {
+const SimilarRecommendations: React.FC<SimilarRecommendationsProps> = ({ openMovieDataModal }) => {
   const context = useContext(WatchListInfo);
   if (!context)
     throw new Error("Files must be used within a WatchListProvider");
@@ -89,6 +93,7 @@ const SimilarRecommendations = () => {
               <div
                 className="carousel-item rounded-lg mx-1 relative cursor-pointer"
                 key={index}
+                onClick={() => openMovieDataModal(movie)}
               >
                 <img
                   className='rounded-xl w-full h-full object-cover opacity-100 hover:opacity-15 duration-250'

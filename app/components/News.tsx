@@ -5,10 +5,15 @@ import backSvg from "../pictures/arrow_back_ios_24dp_E8EAED_FILL0_wght400_GRAD0_
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import WeeklyNews from "./WeeklyNews";
-import PopularMovies from "./popularMovies";
-import PopularSeries from "./popularSeries";
+import { MovieData } from "@/lib/types";
+import PopularMovies from "./PopularMovies";
+import PopularSeries from "./PopularSeries";
 
-const AllNews = () => {
+interface AllNewsProps {
+  openMovieDataModal: (movie: MovieData) => void;
+}
+
+const AllNews: React.FC<AllNewsProps> = ({ openMovieDataModal }) => {
   const router = useRouter();
   const handleBack = () => {
     router.back();
@@ -25,9 +30,9 @@ const AllNews = () => {
       </div>
       <h3 className="responsive-h3 text-white font-bold pb-6">News</h3>
       <div className="h-full flex flex-col items-start gap-4 justify-start">
-        <WeeklyNews />
-        <PopularMovies />
-        <PopularSeries />
+        <WeeklyNews openMovieDataModal={openMovieDataModal} />
+        <PopularMovies openMovieDataModal={openMovieDataModal} />
+        <PopularSeries openMovieDataModal={openMovieDataModal} />
       </div>
     </div>
   );

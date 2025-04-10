@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useContext, useState, useEffect } from 'react';
-import { fetchSimilarMovies } from '@/lib/api';
-import { WatchListInfo } from './WatchListInfo';
 import { MovieData } from '@/lib/types';
 import { fetchPopularMovies } from '@/lib/api';
+
+interface PopularMoviesProps {
+  openMovieDataModal: (movie: MovieData) => void;
+}
 
 // This is a basic mapping, you might want to fetch this from an API or have a more comprehensive list
 const genreMap: Record<number, string> = {
@@ -39,7 +41,7 @@ const getGenreNames = (genreIds: number[] | undefined): string => {
     .join(', ');
 };
 
-const PopularMovies = () => {
+const PopularMovies: React.FC<PopularMoviesProps> = ({ openMovieDataModal }) => {
   const [movies, setMovies] = useState<MovieData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -69,6 +71,7 @@ const PopularMovies = () => {
               <div
                 className="carousel-item rounded-lg mx-1 relative cursor-pointer"
                 key={index}
+                onClick={() => openMovieDataModal(movie)}
               >
                 <img
                   className='rounded-xl w-full h-full object-cover opacity-100 hover:opacity-15 duration-250'

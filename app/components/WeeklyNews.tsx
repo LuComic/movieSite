@@ -4,6 +4,10 @@ import React, { useState, useEffect } from "react";
 import { weeklyNews } from "@/lib/api";
 import { MovieData } from "@/lib/types";
 
+interface WeeklyNewsProps {
+  openMovieDataModal: (movie: MovieData) => void;
+}
+
 // This is a basic mapping, you might want to fetch this from an API or have a more comprehensive list
 const genreMap: Record<number, string> = {
   28: 'Action',
@@ -38,7 +42,7 @@ const getGenreNames = (genreIds: number[] | undefined): string => {
 };
 
 
-const WeeklyNews = () => {
+const WeeklyNews: React.FC<WeeklyNewsProps> = ({ openMovieDataModal }) => {
   const [trendingNews, setTrendingNews] = useState<MovieData[] | null>(null);
   let topTrending = null;
 
@@ -65,7 +69,7 @@ const WeeklyNews = () => {
     <div className='flex flex-col w-full h-full'>
       <div className="h-auto flex flex-col lg:grid xl:grid lg:grid-cols-2 xl:grid-cols-2 items-start gap-4 justify-start">
         {topTrending ? (
-          <div>
+          <div className="cursor-pointer" onClick={() => openMovieDataModal(topTrending)}>
             <h3 className='responsive-h3 text-white font-semibold'>Top trending this week!</h3>
             <div className="card card-side bg-black/60 border-2 my-4 h-[60vh] w-auto border-red-600">
               <figure>
@@ -92,6 +96,7 @@ const WeeklyNews = () => {
                 <div
                   className="carousel-item rounded-lg mx-1 relative cursor-pointer"
                   key={index}
+                  onClick={() => openMovieDataModal(movie)}
                 >
                   <img
                     className='rounded-xl w-full h-full object-cover opacity-100 hover:opacity-15 duration-250'

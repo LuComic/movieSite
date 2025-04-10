@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MovieData } from '@/lib/types';
 import { fetchPopularMovies } from '@/lib/api';
 

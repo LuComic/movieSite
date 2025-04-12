@@ -27,7 +27,7 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
               className="w-[60vw] h-full xl:max-h-full xl:max-w-[80vw] lg:max-w-[80vw] md:max-w-[40vw] sm:max-w-[50vw] object-contain" // Change object-cover to object-contain
             />
           ) : (
-            <div className="w-full h-96 bg-gray-700 animate-pulse"></div>
+            <div className="w-full h-auto max-h-96 bg-gray-700 animate-pulse"></div>
           )}
         </figure>
 
@@ -43,7 +43,7 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
           <h3 className="responsive-h3 font-semibold text-white mb-2">
             {movie.name}
           </h3>
-          <p className="text-white grow-0">{description}</p>
+          <p className="text-white grow-0 mb-2">{description}</p>
           <div className="my-auto">
             <div className="mb-3">
               <p className="text-white font-semibold responsive-body">

@@ -53,12 +53,6 @@ const WeeklyNews: React.FC<WeeklyNewsProps> = ({ openMovieDataModal }) => {
     };
 
     fetchWeeklyData();
-
-    // A week
-    const oneWeek = 7 * 24 * 60 * 60 * 1000;
-    const intervalId = setInterval(fetchWeeklyData, oneWeek);
-
-    return () => clearInterval(intervalId);
   }, []);
 
   if (trendingNews && trendingNews.length > 0) {

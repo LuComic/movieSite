@@ -149,7 +149,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/90 z-50">
+    <div className="fixed inset-0 bg-black/90 z-50" onClick={() => setSearchResults(null)}>
       <div className="modal border-2 border-red-600 rounded-xl bg-black/60 max-w-md modal-open mx-auto h-max xl:p-4 lg:p-4 p-2 my-auto flex flex-col justify-center gap-4 xl:py-6 lg:py-6 py-4">
         <h3 className="responsive-h3 text-white font-bold pb-2">
           Something new?

@@ -3,9 +3,11 @@
 import { useState, useContext, useEffect } from "react";
 import { WatchListInfo } from "./WatchListInfo";
 import { WatchItem } from "@/lib/types";
-import { fetchMovieData } from "@/lib/api";
+import { fetchMovieData, searchMovies } from "@/lib/api";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+import searchIcon from "../pictures/Material Icon Search.svg";
+import { MovieData } from "@/lib/types";
 
 interface ModalProps {
   closeModal: () => void;
@@ -26,6 +28,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
     rating: 0,
   });
 
+  const [searchResults, setSearchResults] = useState<MovieData[] | null>(null);
   const [, setError] = useState<string | null>(null); // Error message
   // Clear error state on component mount and unmount
   useEffect(() => {
@@ -45,6 +48,31 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
       [name]: name === "rating" ? Number(value) : value, // Handle rating as a number
     }));
     setError(null);
+  };
+
+  const findMovie = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setForm(prev => ({ ...prev, name: value }));
+  };
+
+  const handleSearch = async () => {
+    if (form.name.length >= 2) {
+      try {
+        const results = await searchMovies(form.name, form.type);
+        setSearchResults(results);
+      } catch (error) {
+        console.error("Error searching movies:", error);
+        setSearchResults(null);
+      }
+    }
+  };
+
+  const handleResultClick = (movie: MovieData) => {
+    setForm(prev => ({
+      ...prev,
+      name: movie.title || movie.name || "",
+    }));
+    setSearchResults(null);
   };
 
   const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -143,16 +171,37 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           </option>
         </select>
         <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
-          What&apos;s the name?
+          Search
         </p>
-        <input
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="Name"
-          className="input input-bordered w-full max-w-xs bg-black/0 border-1 text-white border-white focus:outline-none"
-        />
+        <div className="relative flex w-full max-w-xs items-center gap-2">
+          <input
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={findMovie}
+            placeholder="Title"
+            className="input input-bordered w-full bg-black/0 border-1 text-white border-white focus:outline-none"
+          />
+          <button 
+            onClick={handleSearch}
+            className="btn btn-square bg-transparent border-white hover:bg-white/10"
+          >
+            <img src={searchIcon.src} alt="Search" className="w-5 h-5" />
+          </button>
+        </div>
+        {searchResults && searchResults.length > 0 && (
+          <div className="absolute top-[40%] z-50 w-[80%] mx-auto bg-black border-2 border-white rounded-lg p-2 max-h-60 overflow-y-auto">
+            {searchResults.map((movie) => (
+              <div
+                key={movie.id}
+                onClick={() => handleResultClick(movie)}
+                className="p-2 cursor-pointer text-white rounded-md hover:text-red-300 duration-200"
+              >
+                {movie.title || movie.name} - {movie.release_date}
+              </div>
+            ))}
+          </div>
+        )}
         <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
           Already watched or planning?
         </p>

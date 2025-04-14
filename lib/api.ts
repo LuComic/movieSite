@@ -155,3 +155,33 @@ export const fetchPopularMovies = async (type: 'Movie' | 'Series' = 'Movie'):Pro
     return null;
   }
 }
+
+export const searchMovies = async (query: string, type: 'Movie' | 'Series' = 'Movie'): Promise<MovieData[] | null> => {
+  const endpoint = type.toLowerCase() === "movie" ? "movie" : "tv";
+  try {
+    const searchResponse = await axios.get(`${BASE_URL}/search/${endpoint}`, {
+      params: {
+        api_key: API_KEY,
+        query: query,
+        page: 1,
+      },
+    });
+    if (
+      !searchResponse.data ||
+      !searchResponse.data.results ||
+      searchResponse.data.results.length === 0
+    ) {
+      console.warn('No movies or series found matching the search query');
+      return null;
+    }
+
+    const result = searchResponse.data;
+    const searchResults = result.results as MovieData[];
+
+    return searchResults.slice(0, 5);
+
+  } catch (error) {
+    console.error("Error searching for movies or series:", error);
+    return null;
+  }
+}

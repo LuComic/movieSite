@@ -154,7 +154,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
         <h3 className="responsive-h3 text-white font-bold pb-2">
           Something new?
         </h3>
-        <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
+        <p className="responsive-body text-white font-medium w-full max-w-xs">
           Movie or series?
         </p>
         <select
@@ -170,7 +170,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
             Series
           </option>
         </select>
-        <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
+        <p className="responsive-body text-white font-medium w-full max-w-xs">
           Search
         </p>
         <div className="relative flex w-full max-w-xs items-center gap-2">
@@ -202,7 +202,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
             ))}
           </div>
         )}
-        <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
+        <p className="responsive-body text-white font-medium w-full max-w-xs">
           Already watched or planning?
         </p>
         <select
@@ -216,7 +216,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
         </select>
         {form.status === "Watched" && ( // Check form.status instead of selectedValue
           <>
-            <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
+            <p className="responsive-body text-white font-medium w-full max-w-xs">
               Thoughts?
             </p>
             <textarea
@@ -226,7 +226,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
               onChange={handleChange}
               className="textarea textarea-bordered border-1 w-full bg-black/0 max-w-xs text-white border-white focus:outline-none"
             ></textarea>
-            <p className="responsive-body text-white font-medium mr-auto xl:pl-12 lg:pl-12 md:pl-14 sm:pl-14 pl-14">
+            <p className="responsive-body text-white font-medium w-full max-w-xs">
               Rate it 1 to 10
             </p>
             <input
@@ -242,7 +242,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
             />
           </>
         )}
-        <div className="flex justify-between gap-4 mt-4">
+        <div className="flex justify-between gap-4 mt-2">
           <button
             onClick={closeModal}
             className="btn bg-slate-200 hover:bg-slate-300 text-black border-none"

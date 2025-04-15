@@ -184,7 +184,7 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           />
           <button 
             onClick={handleSearch}
-            className="btn btn-square bg-transparent border-white hover:bg-white/10"
+            className="btn btn-square bg-transparent border-1 border-white hover:bg-white/10"
           >
             <img src={searchIcon.src} alt="Search" className="w-5 h-5" />
           </button>

@@ -343,3 +343,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Prevent zooming on input fields */
+input, select, textarea {
+  font-size: 16px !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* For iOS devices */
+@supports (-webkit-touch-callout: none) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}

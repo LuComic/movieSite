@@ -138,7 +138,7 @@ export const weeklyNews = async (): Promise<MovieData[] | null> => {
     const news = result.results as MovieData[];
 
     const detailedNews = await Promise.all(
-      news.slice(0, 6).map(async (movie) => {
+      news.map(async (movie) => {
         const mediaType = movie.media_type;
         const detailsResponse = await fetchDataFromTMDB(
           `${BASE_URL}/${mediaType}/${movie.id}?append_to_response=credits`
@@ -187,7 +187,7 @@ export const fetchPopularMovies = async (type: 'Movie' | 'Series' = 'Movie'):Pro
 
     // Fetch detailed information including credits for each movie/series
     const detailedMovies = await Promise.all(
-      typedMovies.slice(0, 10).map(async (movie) => {
+      typedMovies.map(async (movie) => {
         const detailsResponse = await fetchDataFromTMDB(
           `${BASE_URL}/${endpoint}/${movie.id}?append_to_response=credits`
         );
@@ -228,7 +228,7 @@ export const searchMovies = async (query: string, type: 'Movie' | 'Series' = 'Mo
     const result = searchResponse.data;
     const searchResults = result.results as MovieData[];
 
-    return searchResults.slice(0, 15);
+    return searchResults;
 
   } catch (error) {
     console.error("Error searching for movies or series:", error);

@@ -88,7 +88,25 @@ export const fetchSimilarMovies = async (id: number, type: 'Movie' | 'Series' = 
     const result = searchResponse.data;
     const similarMovies = result.results as MovieData[];
 
-    return similarMovies.slice(0, 10);
+    const typedSimilarMovies = similarMovies.map(movie => ({
+      ...movie,
+      type: type
+    }));
+
+    // Fetch detailed information including credits for each movie/series
+    const detailedSimilarMovies = await Promise.all(
+      typedSimilarMovies.slice(0, 10).map(async (movie) => {
+        const detailsResponse = await fetchDataFromTMDB(
+          `${BASE_URL}/${endpoint}/${movie.id}?append_to_response=credits`
+        );
+        return {
+          ...detailsResponse,
+          type: type
+        };
+      })
+    );
+
+    return detailedSimilarMovies;
 
   } catch (error) {
     console.error("Error fetching similar movies:", error);
@@ -119,7 +137,20 @@ export const weeklyNews = async (): Promise<MovieData[] | null> => {
     const result = newsResponse.data;
     const news = result.results as MovieData[];
 
-    return news.slice(0, 6);
+    const detailedNews = await Promise.all(
+      news.slice(0, 6).map(async (movie) => {
+        const mediaType = movie.media_type;
+        const detailsResponse = await fetchDataFromTMDB(
+          `${BASE_URL}/${mediaType}/${movie.id}?append_to_response=credits`
+        );
+        return {
+          ...detailsResponse,
+          type: mediaType === 'movie' ? 'Movie' : 'Series'
+        };
+      })
+    );
+
+    return detailedNews;
 
   } catch (error) {
     console.error("Problem fetching news", error);
@@ -128,7 +159,7 @@ export const weeklyNews = async (): Promise<MovieData[] | null> => {
 }
 
 export const fetchPopularMovies = async (type: 'Movie' | 'Series' = 'Movie'):Promise<MovieData[] | null> => {
-  const endpoint = type.toLowerCase() === "movie" ? "movie" : "tv"
+  const endpoint = type.toLowerCase() === "movie" ? "movie" : "tv";
   try {
     const popularResponse = await axios.get(`${BASE_URL}/${endpoint}/popular`, {
       params: {
@@ -147,8 +178,27 @@ export const fetchPopularMovies = async (type: 'Movie' | 'Series' = 'Movie'):Pro
 
     const result = popularResponse.data;
     const popularMovies = result.results as MovieData[];
+    
+    // Add type property to each movie
+    const typedMovies = popularMovies.map(movie => ({
+      ...movie,
+      type: type
+    }));
 
-    return popularMovies.slice(0, 10);
+    // Fetch detailed information including credits for each movie/series
+    const detailedMovies = await Promise.all(
+      typedMovies.slice(0, 10).map(async (movie) => {
+        const detailsResponse = await fetchDataFromTMDB(
+          `${BASE_URL}/${endpoint}/${movie.id}?append_to_response=credits`
+        );
+        return {
+          ...detailsResponse,
+          type: type
+        };
+      })
+    );
+
+    return detailedMovies;
 
   } catch (error) {
     console.error("Error fetching popular movies:", error);

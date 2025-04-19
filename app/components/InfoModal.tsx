@@ -49,7 +49,7 @@ const InfoModal: React.FC<ModalProps> = ({ closeInfoModal, movie }) => {
               <p className="text-white font-semibold responsive-body">
                 Release:
               </p>
-              <p className="text-white text-left mb-2 mt-1">{movie.releaseDate}</p>
+              <p className="text-white text-left mb-2 mt-1">{movie.releaseDate || movie.first_air_date || "Unknown"}</p>
             </div>
             <div className="mb-3">
               <p className="text-white font-semibold responsive-body">

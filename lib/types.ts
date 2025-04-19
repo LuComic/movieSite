@@ -1,5 +1,6 @@
 export interface MovieData {
   id: number;
+  type?: 'Movie' | 'Series';
   title?: string;
   name?: string;
   overview?: string;
@@ -12,6 +13,7 @@ export interface MovieData {
   credits?: {
       cast: { name: string }[];
   };
+  media_type?: 'movie' | 'tv';
 }
 
 export interface WatchItem {
@@ -23,6 +25,7 @@ export interface WatchItem {
   rating: number;
   posterUrl?: string;
   releaseDate?: string;
+  first_air_date?: string;
   genres?: string;
   movieCast?: string;
   avg_rating?: number;

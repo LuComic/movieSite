@@ -31,7 +31,11 @@ const genreMap: Record<number, string> = {
   37: 'Western',
 };
 
-const getGenreNames = (genreIds: number[] | undefined): string => {
+const getGenreNames = (genreIds: number[] | undefined, genres?: { id: number; name: string }[] | null | undefined): string => {
+  if (genres && Array.isArray(genres)) {
+    return genres.map(genre => genre.name).join(', ');
+  }
+  
   if (!genreIds || genreIds.length === 0) {
     return '';
   }
@@ -79,7 +83,7 @@ const PopularSeries: React.FC<PopularSeriesProps> = ({ openMovieDataModal }) => 
                   alt={serie.title}
                 />
                 <div className='bg-black/50 rounded-xl flex flex-col justify-end w-full h-full absolute top-0 left-0 p-4 opacity-0 hover:opacity-100 duration-250'>
-                  <p className='responsive-h3 text-white font-bold'>{serie.title}</p>
+                  <p className='responsive-h3 text-white font-bold'>{serie.title || serie.name || 'Untitled'}</p>
                   <p className='responsive-body text-white'>{getGenreNames(serie.genre_ids)}</p>
                 </div>
               </div>

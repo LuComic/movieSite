@@ -98,8 +98,9 @@ const WatchModal: React.FC<ModalProps> = ({ closeModal }) => {
           ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
           : undefined;
 
-        const releaseDate = movieData.release_date || "Unknown"; // Release date
-
+        const releaseDate = form.type === 'Movie' 
+          ? movieData.release_date || "Unknown"
+          : movieData.first_air_date || "Unknown"; // Use first_air_date for TV shows
 
         if (movieData.genres && Array.isArray(movieData.genres)) {
           movieData.genres.forEach((genre, index) => {

@@ -31,16 +31,20 @@ const genreMap: Record<number, string> = {
   37: 'Western',
 };
 
-const getGenreNames = (genreIds: number[] | undefined): string => {
+const getGenreNames = (genreIds: number[] | undefined, genres?: { id: number; name: string }[] | null | undefined): string => {
+  if (genres && Array.isArray(genres)) {
+    return genres.map(genre => genre.name).join(', ');
+  }
+  
   if (!genreIds || genreIds.length === 0) {
     return '';
   }
+
   return genreIds
     .map(id => genreMap[id])
     .filter(name => name !== undefined)
     .join(', ');
 };
-
 
 const WeeklyNews: React.FC<WeeklyNewsProps> = ({ openMovieDataModal }) => {
   const [trendingNews, setTrendingNews] = useState<MovieData[] | null>(null);
@@ -74,7 +78,7 @@ const WeeklyNews: React.FC<WeeklyNewsProps> = ({ openMovieDataModal }) => {
                 />
               </figure>
               <div className="card-body flex flex-col gap-4">
-                <p className="max-h-max responsive-h3 font-bold text-white">{topTrending.title}</p>
+                <p className="max-h-max responsive-h3 font-bold text-white">{topTrending.title || topTrending.name || "Unknown"}</p>
                 <p className="max-h-max responsive-body text-white">{getGenreNames(topTrending.genre_ids)}</p>
               </div>
             </div>

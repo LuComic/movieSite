@@ -31,7 +31,11 @@ const genreMap: Record<number, string> = {
   37: 'Western',
 };
 
-const getGenreNames = (genreIds: number[] | undefined): string => {
+const getGenreNames = (genreIds: number[] | undefined, genres?: { id: number; name: string }[] | null | undefined): string => {
+  if (genres && Array.isArray(genres)) {
+    return genres.map(genre => genre.name).join(', ');
+  }
+  
   if (!genreIds || genreIds.length === 0) {
     return '';
   }

@@ -178,7 +178,7 @@ export const searchMovies = async (query: string, type: 'Movie' | 'Series' = 'Mo
     const result = searchResponse.data;
     const searchResults = result.results as MovieData[];
 
-    return searchResults.slice(0, 5);
+    return searchResults.slice(0, 15);
 
   } catch (error) {
     console.error("Error searching for movies or series:", error);
